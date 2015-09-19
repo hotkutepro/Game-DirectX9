@@ -15,7 +15,7 @@ Game::~Game(void)
 {
 }
 //Ham xu ly cua so. Chi can quan tam den ?M_DESTROY
-LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+HRESULT CALLBACK Game::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	if (message == WM_DESTROY)
 	{
