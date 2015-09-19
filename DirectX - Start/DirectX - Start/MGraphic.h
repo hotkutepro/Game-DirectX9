@@ -32,7 +32,7 @@ public:
 	void DrawTexture(LPDIRECT3DTEXTURE9 texture, RECT source, D3DXVECTOR2 postion, D3DCOLOR color);
 	
 	//Ve surface
-	void DrawSurface();
+	void DrawSurface(LPDIRECT3DSURFACE9 surface,RECT source, D3DXVECTOR2 position, D3DCOLOR color);
 	//Lay thiet bi ve
 	LPDIRECT3DDEVICE9 GetDevice();
 };

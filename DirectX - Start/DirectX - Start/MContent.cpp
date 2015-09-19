@@ -10,21 +10,21 @@ LPDIRECT3DTEXTURE9 MContent::LoadTexture(string path)
 	D3DXIMAGE_INFO info;
 	HRESULT hr;
 	ZeroMemory(&info, sizeof(info));
-	//l?y thông tin v? hình ?nh
+	//lay thong tin hinh anh
 	hr = D3DXGetImageInfoFromFile(path.c_str(), &info);
 	if (hr != D3D_OK)
 		return NULL;
-	//t?o texture
+	//tao texture
 	hr = D3DXCreateTextureFromFileEx(this->d3ddv,
 		path.c_str(),
 		info.Width,
 		info.Height,
 		1,
 		D3DUSAGE_DYNAMIC,
-		D3DFMT_UNKNOWN,// t? ??ng ch?n format phù h?p
-		D3DPOOL_DEFAULT, //Ch?n b? nh? ?? l?u t? ??ng
-		D3DX_DEFAULT,//Ch?n tham s? m?c ??nh
-		D3DX_DEFAULT,//Ch?n tham s? m?c ??nh
+		D3DFMT_UNKNOWN,// tu chon format phu hop
+		D3DPOOL_DEFAULT, 
+		D3DX_DEFAULT,
+		D3DX_DEFAULT,
 		D3DCOLOR_XRGB(255, 255, 255),
 		&info,//thông tin hình ?nh
 		NULL,

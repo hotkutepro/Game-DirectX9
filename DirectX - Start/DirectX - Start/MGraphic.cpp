@@ -74,3 +74,12 @@ void MGraphic::DrawTexture(LPDIRECT3DTEXTURE9 texture, D3DXVECTOR2 postion, D3DC
 		color
 		);
 }
+
+void MGraphic::DrawSurface(LPDIRECT3DSURFACE9 surface, RECT source, D3DXVECTOR2 position, D3DCOLOR color)
+{
+
+}
+LPDIRECT3DDEVICE9 MGraphic::GetDevice()
+{
+	return this->d3ddev;
+}
