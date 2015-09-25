@@ -5,7 +5,7 @@ using namespace std;
 class FrkContent
 {
 	//thiet bi ve lay tu lop graphic
-	LPDIRECT3DDEVICE9 d3ddv;
+	LPDIRECT3DDEVICE9 m_hD3DDevice;
 public:
 	// load 1 texture
 	LPDIRECT3DTEXTURE9 LoadTexture(string path);
