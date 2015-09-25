@@ -14,23 +14,30 @@ namespace MyMap
 {
     public partial class Form1 : Form
     {
-        int _column = 0;
-        int _row = 0;
+        int _column = 0;//số phần tử trên một dòng
+        int _row = 0;//số phần tử trên một cột
+        int _width = 0;//chiều dài của phần tử
+        int _height = 0;//chiều rộng của phần tử
         int[,] _arrmap;
-        Queue<Rectangle> qRectDest = new Queue<Rectangle>();
+        int _index = -1;
+        Queue<Rectangle> qRectDest = new Queue<Rectangle>();        
+
+        List<Button> _lObject = new List<Button>();//danh sách các đối tượng thể hiện bên phải cửa sổ
+        List<OinMap> _lTiled = new List<OinMap>();//các đối tượng được vẽ trên map
+        List<TextBox> _lNameObject = new List<TextBox>();
+        List<Label> _lIdObject = new List<Label>();
         Bitmap _img;
-        Bitmap _dest;
-        int _width = 0;
-        int _height = 0;
+        Bitmap _dest;        
         tiled _tiled = new tiled();
-        Image _image;
-        Graphics gf;
+        Image _image;       
+        Size _sizeObject;
+
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
         public void createmap()
-        {                       
+        {
             _arrmap = new int[_row, _column];
             List<tiled> listtiled = new List<tiled>();
 
@@ -64,8 +71,8 @@ namespace MyMap
             using (var stream = new FileStream(filename + ".txt", FileMode.Create, FileAccess.Write, FileShare.None))
             using (var writer = new StreamWriter(stream))
             {
-                writer.Write(_column + " " + _row + "\r\n");
-                for (int i = 0; i < _row; i++)
+                writer.Write(_row + " " + _column + "\r\n");
+                for (int i = _row-1; i>=0 ; i--)
                 {
                     for (int j = 0; j < _column; j++)
                     {
@@ -74,6 +81,7 @@ namespace MyMap
                     }
                     writer.Write("\r\n");
                 }
+                writer.Close();
             }
         }
         private bool checkPixels(Rectangle r1, Rectangle r2)
@@ -122,74 +130,29 @@ namespace MyMap
                     fs.Write(bytes, 0, bytes.Length);
                 }
             }
-        }        
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void label16_Click(object sender, EventArgs e)
-        {
-
-        }
+        }                                
         private void tbtw_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar == 8);
         }
-
         private void tbth_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar == 8);
-        }
-
-        private void btThoat_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+        }       
         private void btbrowses_Click(object sender, EventArgs e)
-        {
+        {                        
             try
             {                
-                gf = CreateGraphics();
                 OpenFileDialog openFile = new OpenFileDialog();
-                if (openFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    tbsourse.Text = openFile.FileName;
-                }
-
-                _image = Image.FromFile(tbsourse.Text);                
-                pictureBox1.Image = Image.FromFile(tbsourse.Text);
-                _img = new Bitmap(tbsourse.Text);
-                tbw.Text = "" + _img.Width;
-                tbh.Text = "" + _img.Height;                
-                _width = int.Parse(tbtw.Text);
-                _height = int.Parse(tbth.Text);                
-                _column = _img.Width / _width;
-                _row = _img.Height / _height;
+                openFile.Filter = "Image|*.jpg;*.png;*.bmp;*.jpeg;*.gif";
+                if (openFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)                
+                    tbsourse.Text = openFile.FileName;                             
             }
-            catch (Exception ex) { }
-        }
-
+            catch
+            {
+                MessageBox.Show("Nhập lại đường dẫn của file ảnh");
+            }            
+        }        
         private void btBrowsesI_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -197,92 +160,212 @@ namespace MyMap
             {
                 tbnoiluuim.Text = fbd.SelectedPath;
             }
-        }        
+        }
         private void btDuyet_Click(object sender, EventArgs e)
-        {         
+        {
             createmap();
             writemap(tbnoiluuim.Text + "\\" + tbIn.Text);
             drawMap();
-            saveTiledMap(tbnoiluuim.Text + "\\" + tbIn.Text);
-            MessageBox.Show("Success", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void tbth_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                int w = int.Parse(tbtw.Text);
-                int h = int.Parse(tbth.Text);
-                _width = int.Parse(tbtw.Text);
-                _height = int.Parse(tbth.Text);
-                _row = _img.Height / h;
-                _column = _img.Width / w;
-                if (_img.Width % w == 0 && _img.Height % h == 0)
-                {
-                    btDuyet.Enabled = true;
-                    lbtile.Text = "Tương xứng tỉ lệ";
-                }
-                else
-                {
-                    btDuyet.Enabled = false;
-                    lbtile.Text = "Chưa Tương xứng tỉ lệ";
-                }
-            }
-            catch (Exception ex)
-            {
-                btDuyet.Enabled = false;
-            }
-        }
-
-        private void tbtw_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                int w = int.Parse(tbtw.Text);                
-                int h = int.Parse(tbth.Text);
-                _width = int.Parse(tbtw.Text);
-                _height = int.Parse(tbth.Text);
-                
-                if (_img.Width % w == 0 && _img.Height % h == 0)
-                {
-                    btDuyet.Enabled = true;
-                    lbtile.Text = "Tương xứng tỉ lệ";
-                }
-                else { 
-                    btDuyet.Enabled = false;
-                    lbtile.Text = "Chưa Tương xứng tỉ lệ";
-                }
-            }
-            catch (Exception ex)
-            {
-                btDuyet.Enabled = false;
-            }
+            saveTiledMap(tbnoiluuim.Text + "\\hihi" + tbIn.Text);
+            MessageBox.Show("Đã Căt Xong! Tới đường dẫn " + tbsourse.Text + " để xem kết quả");
         }
         
-    }
-    public class tiled
-    {
-        private Rectangle _rec;
-        public System.Drawing.Rectangle rec
-        {
-            get { return _rec; }
-            set { _rec = value; }
+        private void _btAddtiled_Click(object sender, EventArgs e)
+        {            
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "Image|*.jpg;*.png;*.bmp;*.jpeg;*.gif";
+            if (openFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Button tmp = new Button();
+                tmp.Size = _sizeObject;
+                tmp.Image = Image.FromFile(openFile.FileName);
+                //mỗi đối tượng Object(bên phải cửa sổ ) sẽ có tên riêng để phân biệt và tên riêng cũng chính là số thứ tự trong list
+                tmp.Name = ""+_lObject.Count;
+                tmp.Location = new Point(10,100+ _lObject.Count * _height);
+                tmp.MouseClick += new MouseEventHandler(Tiled_MouseClick);
+                _lObject.Add(tmp);                
+                panel2.Controls.Add(_lObject[_lObject.Count-1]);
+
+
+                TextBox tbm = new TextBox();
+                tbm.Size = new Size(64, 20);
+                tbm.Name = "" + _lNameObject.Count;
+                tbm.Location = new Point(_lObject[_lObject.Count - 1].Location.X + _lObject[_lObject.Count - 1].Size.Width + 35, _lObject[_lObject.Count - 1].Location.Y);
+                _lNameObject.Add(tbm);
+                panel2.Controls.Add(_lNameObject[_lNameObject.Count - 1]);
+
+                Label lbm = new Label();
+                lbm.Size = new Size(25,20);
+                lbm.Text = "Id";
+                lbm.Location= new Point(_lObject[_lObject.Count - 1].Location.X + _lObject[_lObject.Count - 1].Size.Width + 20, _lObject[_lObject.Count - 1].Location.Y);
+                _lIdObject.Add(lbm);
+                panel2.Controls.Add(_lIdObject[_lIdObject.Count-1]);
+                btnGetObject.Enabled = true;                   
+            }            
         }
-        private Point _point;
-        public System.Drawing.Point point
+        void Tiled_MouseClick(object sender, MouseEventArgs e)
         {
-            get { return _point; }
-            set { _point = value; }
+            Button t = (Button)sender;
+            foreach (Button i in _lObject)
+            {
+                if (t.Name == i.Name)
+                {                    
+                    _index = int.Parse(i.Name);
+                }
+            }
+
         }
-        public tiled()
+        
+        public class tiled
         {
-            _rec = new Rectangle();
-            _point = new Point();
+            private Rectangle _rec;
+            public System.Drawing.Rectangle rec
+            {
+                get { return _rec; }
+                set { _rec = value; }
+            }
+            private Point _point;
+            public System.Drawing.Point point
+            {
+                get { return _point; }
+                set { _point = value; }
+            }
+            public tiled()
+            {
+                _rec = new Rectangle();
+                _point = new Point();
+            }
+            public tiled(Rectangle rec, Point point)
+            {
+                this._rec = rec;
+                this._point = point;
+            }
         }
-        public tiled(Rectangle rec, Point point)
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            this._rec = rec;
-            this._point = point;
+
+        }
+
+        private void btnKiemTra_Click(object sender, EventArgs e)
+        {
+
+            if(tbsourse.Text=="")
+            {
+                MessageBox.Show("Vui lòng nhập đường dẫn của file ảnh");
+                return;
+            }            
+            if(tbIn.Text=="")
+            {
+                MessageBox.Show("Vui lòng nhập Tên của ảnh sau khi cắt");
+                return;
+            }
+            if (tbtw.Text == "" || tbth.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập kích thước của một đối tượng ảnh");
+                return;
+            }
+            int w = int.Parse(tbtw.Text); 
+            int h = int.Parse(tbth.Text);
+            _img = new Bitmap(tbsourse.Text);
+            if (_img.Width % w != 0 || _img.Height % h != 0)
+            {
+                MessageBox.Show("Kiểm tra lại kích thước của đối tượng ảnh");
+                return;
+            }            
+            _image = Image.FromFile(tbsourse.Text);
+            this._width = int.Parse(tbtw.Text);
+            this._height = int.Parse(tbth.Text);
+            this._column = _img.Width / _width;
+            this._row = _img.Height / _height;
+            btnImage.Image = _image;
+            btnImage.Enabled = true;
+            btDuyet.Enabled = true;
+            btAddtiled.Enabled = true;
+            _sizeObject = new Size(_width, _height);
+            for(int i=0;i<_row;i++)
+                for(int j=0;j<_column;j++)
+                {
+                    OinMap tbm = new OinMap();
+                    tbm.Visible = false;
+                    tbm.Size = _sizeObject;
+                    tbm.Name = "" + (j + i * _column);
+                    tbm.Location=new Point(btnImage.Location.X+j*_width,btnImage.Location.Y+i*_height);
+                    tbm.MouseClick += new MouseEventHandler(l_btnTiled_MouseClick);
+                    _lTiled.Add(tbm);                    
+                }
+        }
+        private void l_btnTiled_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (_index != -2)
+                return;
+            Button t = (Button)sender;
+            int i = int.Parse(t.Name);
+            _lTiled[i].Image = null;
+            _lTiled[i].Visible = false;
+        }
+        private void btnImage_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (_index == -1 || _index==-2)
+                return;
+            panel1.Controls.Remove(btnImage);
+            int x = (e.X - btnImage.Location.X) / _width;
+            int y = (e.Y - btnImage.Location.Y) / _height;
+            _lTiled[x + _column * y].Visible = true;
+            _lTiled[x + _column * y].id = "" + _index;
+            panel1.Controls.Add(_lTiled[x + _column * y]);  
+          
+            panel1.Controls.Add(btnImage);            
+            foreach(Button i in _lObject)
+            {
+                if (i.Name == ("" + _index))
+                    _lTiled[x + _column * y].Image = i.Image;
+            }
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _index = -1;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            _index = -2;
+        }
+
+        private void btnGetObject_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < _lNameObject.Count; i++)
+            {
+                if (_lNameObject[i].Text == "")
+                {
+                    MessageBox.Show("Điền id cho các đối tượng!");
+                    return;
+                }                
+            }
+                using (var stream = new FileStream(tbnoiluuim.Text+"Object.txt", FileMode.Create, FileAccess.Write, FileShare.None))
+                using (var writer = new StreamWriter(stream))
+                {
+
+                    for (int i = 0; i < _lObject.Count; i++)
+                    {
+                        writer.Write(_lNameObject[i].Text + "\r\n");
+                        for (int j = _row - 1; j >= 0; j--)
+                            for (int k = 0; k < _column; k++ )
+                            {
+                                if (_lTiled[k + j * _column].id == _lObject[i].Name)
+                                {
+                                    int x=k * _width; 
+                                    int y=(_row - j) * _height;
+                                    writer.Write(x+ " " + y+" ");
+                                }
+                            }
+                         writer.Write("\r\n");
+                    }
+                    MessageBox.Show("Đã Xong! File vừa tạo có tên là Object.txt");
+                    writer.Close();
+                }
         }        
     }
 }
