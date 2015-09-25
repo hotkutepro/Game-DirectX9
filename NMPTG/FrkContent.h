@@ -1,17 +1,18 @@
 #pragma once
 #include <d3dx9.h>
 #include <string>
+#include "FrkGame.h"
 using namespace std;
 class FrkContent
 {
-	//thiet bi ve lay tu lop graphic
-	LPDIRECT3DDEVICE9 m_hD3DDevice;
+protected:
+	FrkGame* m_hGame;
 public:
 	// load 1 texture
 	LPDIRECT3DTEXTURE9 LoadTexture(string path);
 	//load 1 sufface
 	LPDIRECT3DSURFACE9 LoadSurface(string path);
-	FrkContent(LPDIRECT3DDEVICE9);
+	FrkContent(FrkGame*);
 	~FrkContent(void);
 	
 };

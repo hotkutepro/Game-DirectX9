@@ -1,7 +1,7 @@
 #include "FrkContent.h"
-FrkContent::FrkContent(LPDIRECT3DDEVICE9 hDevice)
+FrkContent::FrkContent(FrkGame* hGame)
 {
-	this->m_hD3DDevice = hDevice;
+	m_hGame = hGame;
 }
 
 LPDIRECT3DTEXTURE9 FrkContent::LoadTexture(string path)
@@ -15,7 +15,7 @@ LPDIRECT3DTEXTURE9 FrkContent::LoadTexture(string path)
 	if (hr != D3D_OK)
 		return NULL;
 	//t?o texture
-	hr = D3DXCreateTextureFromFileEx(this->m_hD3DDevice,
+	hr = D3DXCreateTextureFromFileEx(this->m_hGame->GetDevice(),
 		path.c_str(),
 		info.Width,
 		info.Height,
@@ -44,7 +44,7 @@ LPDIRECT3DSURFACE9 FrkContent::LoadSurface(string path)
 	hr = D3DXGetImageInfoFromFile(path.c_str(), &info);
 	if (hr != D3D_OK)
 		return NULL;
-	hr = this->m_hD3DDevice->CreateOffscreenPlainSurface(
+	hr = this->m_hGame->GetDevice()->CreateOffscreenPlainSurface(
 		info.Width,
 		info.Height,
 		D3DFMT_UNKNOWN,//Ch?n format t? ??ng
