@@ -10,14 +10,16 @@ private:
 	//LPDIRECT3D9 d3d;
 	////thiet bi ve
 	//LPDIRECT3DDEVICE9 d3ddev;
+	FrkGame* m_hGame;
 	//Ve texture
-	LPD3DXSPRITE d3dxSprite;
+	LPD3DXSPRITE m_hD3DXSprite;
 	
 public:
 	//Cai dat thiet bi ve
-	bool InitD3D();
+	bool InitD3DDevice();
 	//Constructor
 	//FrkGraphic(HWND, int, int);
+	FrkGraphic(FrkGame* hGame);
 	//Destructor
 	~FrkGraphic(void);
 	//bat dau ve

@@ -1,15 +1,26 @@
 #include "FrkGame.h"
 
 
-FrkGame::FrkGame(HINSTANCE hIns, int W, int H, char* name)
+FrkGame::FrkGame(HINSTANCE hIns, int Width, int Height, char* hWindowName)
 {
-	this->hInstance = hIns;
-	this->Width = W;
-	this->Height = H;
-	this->hWnd = NULL;
-	this->d3d = NULL;
-	this->d3ddev = NULL;
-	strcpy(this->windowName, name);
+	this->m_hInstance = hIns;
+	this->m_hWidth = Width;
+	this->m_hHeight = Height;
+	this->m_hWnd = NULL;
+	this->m_hD3D = NULL;
+	this->m_hD3DDevive = NULL;
+	strcpy(this->m_hWindowName, hWindowName);
+}
+
+FrkGame::FrkGame(FrkGame* hGame)
+{
+	this->m_hInstance = hGame->m_hInstance;
+	this->m_hWidth = hGame->m_hWidth;
+	this->m_hHeight = hGame->m_hHeight;
+	this->m_hWnd = hGame->m_hWnd;
+	this->m_hD3D = hGame->m_hD3D;
+	this->m_hD3DDevive = hGame->m_hD3DDevive;
+	strcpy(this->m_hWindowName, hGame->m_hWindowName);
 }
 
 
@@ -36,7 +47,7 @@ bool FrkGame::InitWindow()
 	wndclass.hIcon = 0;
 	wndclass.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 	wndclass.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wndclass.hInstance = this->hInstance;
+	wndclass.hInstance = this->m_hInstance;
 	wndclass.lpfnWndProc = (WNDPROC)WndProc;
 	wndclass.lpszClassName = "Game";
 	wndclass.lpszMenuName = NULL;
@@ -46,25 +57,57 @@ bool FrkGame::InitWindow()
 	{
 		return false;
 	}
-	this->hWnd = CreateWindow(
+	this->m_hWnd = CreateWindow(
 		"Game",
-		this->windowName,
+		this->m_hWindowName,
 		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
-		this->Width,
-		this->Height,
+		this->m_hWidth,
+		this->m_hHeight,
 		NULL,
 		NULL,
-		this->hInstance,
+		this->m_hInstance,
 		NULL);
-	if (!this->hWnd)
+	if (!this->m_hWnd)
 		return false;
-	ShowWindow(this->hWnd, SW_NORMAL);
-	UpdateWindow(this->hWnd);
+	ShowWindow(this->m_hWnd, SW_NORMAL);
+	UpdateWindow(this->m_hWnd);
 	return true;
 }
-//
+
+
+bool FrkGame::InitDX()
+{
+	//tao mot doi tuong Direct3D
+	this->m_hD3D = Direct3DCreate9(D3D_SDK_VERSION);
+	if (!this->m_hD3D)
+		return false;
+	//tao thiet bi ve
+	D3DPRESENT_PARAMETERS d3dpp;
+	ZeroMemory(&d3dpp, sizeof(d3dpp));
+	//thong so man hinh
+	d3dpp.BackBufferCount = 1;// 1 backbuffer
+	d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;//auto format
+	d3dpp.BackBufferWidth = this->m_hWidth;
+	d3dpp.BackBufferHeight = this->m_hHeight;
+	d3dpp.hDeviceWindow = this->m_hWnd;// Handle cua so ve~
+	d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;// tham so hay dung
+	d3dpp.Windowed = true;// che do co cua so
+	HRESULT hr = this->m_hD3D->CreateDevice(D3DADAPTER_DEFAULT,//chon thiet bi ve mac dinh
+		D3DDEVTYPE_HAL,//su dung ho tro phan cung
+		this->m_hWnd,// Cua so ve
+		D3DCREATE_SOFTWARE_VERTEXPROCESSING,
+		&d3dpp,// thong so cho back buffer
+		&this->m_hD3DDevive//con tro nhan du lieu sau khi tao device
+		);
+
+	if (FAILED(hr))
+	{
+		return false;
+	}
+	return true;
+}
 //Init game data
 void FrkGame::InitData()
 {
@@ -81,34 +124,7 @@ void FrkGame::Render()
 
 }
 
-bool FrkGame::InitDX()
+LPDIRECT3DDEVICE9 FrkGame::GetDevice()
 {
-	//tao mot doi tuong Direct3D
-	this->d3d = Direct3DCreate9(D3D_SDK_VERSION);
-	if (!this->d3d)
-		return false;
-	//tao thiet bi ve
-	D3DPRESENT_PARAMETERS d3dpp;
-	ZeroMemory(&d3dpp, sizeof(d3dpp));
-	//thong so man hinh
-	d3dpp.BackBufferCount = 1;// 1 backbuffer
-	d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;//auto format
-	d3dpp.BackBufferWidth = this->Width;
-	d3dpp.BackBufferHeight = this->Height;
-	d3dpp.hDeviceWindow = this->hWnd;// Handle cua so ve~
-	d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;// tham so hay dung
-	d3dpp.Windowed = true;// che do co cua so
-	HRESULT hr = this->d3d->CreateDevice(D3DADAPTER_DEFAULT,//chon thiet bi ve mac dinh
-		D3DDEVTYPE_HAL,//su dung ho tro phan cung
-		this->hWnd,// Cua so ve
-		D3DCREATE_SOFTWARE_VERTEXPROCESSING,
-		&d3dpp,// thong so cho back buffer
-		&this->d3ddev//con tro nhan du lieu sau khi tao device
-		);
-
-	if (FAILED(hr))
-	{
-		return false;
-	}
-	return true;
+	return m_hD3DDevive;
 }

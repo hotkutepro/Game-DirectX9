@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FrkContent.cpp" />
+    <ClCompile Include="FrkGame.cpp" />
     <ClCompile Include="FrkGraphic.cpp" />
     <ClCompile Include="ResourcesManager.cpp" />
     <ClCompile Include="WinMain.cpp" />
