@@ -2,7 +2,20 @@
 
 FrkTexture::FrkTexture()
 {
-	lpDirect3DTexture = 0;
+	m_width = 0;
+	m_height = 0;
+}
+
+FrkTexture::FrkTexture(int width, int height)
+{
+	SetHeight(height);
+	SetWidth(width);
+}
+
+FrkTexture::FrkTexture(FrkTexture& texture)
+{
+	SetHeight(texture.m_height);
+	SetWidth(texture.m_width);
 }
 
 FrkTexture::FrkTexture()
@@ -10,78 +23,33 @@ FrkTexture::FrkTexture()
 
 }
 
-void FrkTexture::LoadTextureFromFile(LPDIRECT3DDEVICE9 lpDirectDevice, LPCSTR fileName, D3DCOLOR colorKey)
+void FrkTexture::SetHeight(int height)
 {
-	D3DXIMAGE_INFO infoImg;
-	HRESULT hr;
-	hr = D3DXGetImageInfoFromFile(fileName, &infoImg);
-
-	if (FAILED(hr))
-	{
-		return;
-	}
-
-	width = infoImg.Width;
-	height = infoImg.Height;
-	hr = D3DXCreateTextureFromFileEx(
-		lpDirectDevice,
-		fileName,
-		infoImg.Width,
-		infoImg.Height,
-		1,
-		D3DUSAGE_DYNAMIC,
-		D3DFMT_UNKNOWN,
-		D3DPOOL_DEFAULT,
-		D3DX_DEFAULT,
-		D3DX_DEFAULT,
-		colorKey,
-		&infoImg,
-		0,
-		&lpDirect3DTexture
-		);
-	if (FAILED(hr))
-	{
-		return;
-	}
+	m_height = height;
 }
 
-void FrkTexture::RenderTexture(
-	LPD3DXSPRITE lpDSpriteHandle,
-	D3DXVECTOR2 position,
-	D3DXVECTOR2 scale,
-	float angle,
-	RECT *srcRect,
-	float deep,
-	D3DCOLOR color)
+void FrkTexture::SetWidth(int width)
 {
-	D3DXVECTOR3 currentPosition(position.x, position.y, deep); // toa  do trong the gioi thuc
+	m_width = width;
+}
 
-	D3DXMAXTRIX oldMatrix; // ma tran luu lai phep transform cua SpriteBatch
+int FrkTexture::GetHeight()
+{
+	return m_height;
+}
 
-	lpDSpriteHandle->GetTranSform(&oldMatrix);
+int FrkTexture::GetWidth()
+{
+	return m_width;
+}
 
-	// lay vi tri cua vat the lam tam xoay (vi tri cua vat la vi tri chinh giua cua vat)
-	D3DXVECTOR2 centerScaleAndRotate = D3DXVECTOR2(position.x, position.y);
+void FrkTexture::SetTexture(FrkTexture texture)
+{
+	SetHeight(texture.GetHeight());
+	SetWidth(texture.GetWidth());
+}
 
-	D3DXMATRIX matrixScalingRotate; // ma tran rotate, scale
-
-	D3DXMatrixTransformation2d(&matrixScalingRotate,
-		&centerScaleAndRotate,
-		0.0f,
-		&scale,
-		&centerScaleAndRotate,
-		D3DXToRadian(angle), 0);
-	D3DXMATRIX finalMatrix = matrixScalingRotate * oldMatrix;
-
-	// ma tran chuyen toa do vi tri cua vat the tu the gioi thuc sang toa do trong directX de ve
-	lpDSpriteHandle->SetTranform(&finalMatrix);
-
-	lpDSpriteHandle->Draw(
-		this->lpDirect3DTexture,
-		srcRect,
-		&D3DXVECTOR3((float)(srcRect->right - srcRect->left) / 2, (float)(srcRect->bottom - srcRect->top) / 2, 0),
-		&currentPosition,
-		color);
-
-	lpDSpriteHandle->SetTransform(&oldMatrix);
+FrkTexture FrkTexture::GetTexture()
+{
+	return FrkTexture(m_width, m_height);
 }

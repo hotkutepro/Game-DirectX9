@@ -13,15 +13,18 @@ using namespace std;
 class FrkTexture
 {
 private:
-	LPDIRECT3DTEXTURE9 lpDirect3DTexture;
+	int m_width;
+	int m_height;
 public:
-	int width;
-	int height;
-
-	FrkTexture();
+	void SetHeight(int);
+	void SetWidth(int);
+	void SetTexture(FrkTexture);
+	int GetHeight();
+	int GetWidth();
+	FrkTexture GetTexture(FrkTexture);
+	FrkTexture(FrkTexture&);
+	FrkTexture(int, int);
 	~FrkTexture();
-	void LoadTextureFromFile(LPDIRECT3DDEVICE9 lpDirectDevice, LPCSTR fileName, D3DCOLOR colorKey = 0xffffffff);
-	void RenderTexture(LPD3DXSPRITES lpDSpriteHandle, D3DVECTOR2 position, D3DVECTOR2 scale, float angle, RECT *srcRect, float deep, D3DCOLOR color = 0xffffffff);
 };
 
 #endif
