@@ -21,7 +21,8 @@ public:
 	void SetTexture(FrkTexture);
 	int GetHeight();
 	int GetWidth();
-	FrkTexture GetTexture(FrkTexture);
+	FrkTexture();
+	FrkTexture GetTexture();
 	FrkTexture(FrkTexture&);
 	FrkTexture(int, int);
 	~FrkTexture();

@@ -18,11 +18,6 @@ FrkTexture::FrkTexture(FrkTexture& texture)
 	SetWidth(texture.m_width);
 }
 
-FrkTexture::FrkTexture()
-{
-
-}
-
 void FrkTexture::SetHeight(int height)
 {
 	m_height = height;
