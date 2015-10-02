@@ -34,7 +34,7 @@ void FrkSurface::LoadSurfaceFromFile(LPDIRECT3DDEVICE9 lpDirectDevice, D3DCOLOR 
 		&lpSurface,
 		0);
 
-	if (FAILED(HR))
+	if (FAILED(hr))
 	{
 		return;
 	}
@@ -49,7 +49,7 @@ void FrkSurface::LoadSurfaceFromFile(LPDIRECT3DDEVICE9 lpDirectDevice, D3DCOLOR 
 		colorKey,
 		0);
 
-	if (FAILED(HR))
+	if (FAILED(hr))
 	{
 		return;
 	}

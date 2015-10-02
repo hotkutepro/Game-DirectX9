@@ -13,17 +13,18 @@ using namespace std;
 class FrkTexture
 {
 private:
-	int m_width;
-	int m_height;
+	LPDIRECT3DTEXTURE9 m_hLpDirect3DTexture;
+	int m_hWidth;
+	int m_hHeight;
 public:
 	void SetHeight(int);
 	void SetWidth(int);
-	void SetTexture(FrkTexture);
 	int GetHeight();
 	int GetWidth();
 	FrkTexture();
-	FrkTexture GetTexture();
-	FrkTexture(FrkTexture&);
+	LPDIRECT3DTEXTURE9 GetImage();
+	void SetImage(LPDIRECT3DTEXTURE9);
+	FrkTexture(FrkTexture*);
 	FrkTexture(int, int);
 	~FrkTexture();
 };

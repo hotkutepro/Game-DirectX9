@@ -2,8 +2,9 @@
 
 FrkTexture::FrkTexture()
 {
-	m_width = 0;
-	m_height = 0;
+	m_hWidth = 0;
+	m_hHeight = 0;
+	m_hLpDirect3DTexture = NULL;
 }
 
 FrkTexture::FrkTexture(int width, int height)
@@ -12,39 +13,43 @@ FrkTexture::FrkTexture(int width, int height)
 	SetWidth(width);
 }
 
-FrkTexture::FrkTexture(FrkTexture& texture)
+FrkTexture::FrkTexture(FrkTexture* texture)
 {
-	SetHeight(texture.m_height);
-	SetWidth(texture.m_width);
+	SetHeight(texture->m_hHeight);
+	SetWidth(texture->m_hWidth);
 }
 
 void FrkTexture::SetHeight(int height)
 {
-	m_height = height;
+	m_hHeight = height;
 }
 
 void FrkTexture::SetWidth(int width)
 {
-	m_width = width;
+	m_hWidth = width;
 }
 
 int FrkTexture::GetHeight()
 {
-	return m_height;
+	return m_hHeight;
 }
 
 int FrkTexture::GetWidth()
 {
-	return m_width;
+	return m_hWidth;
 }
 
-void FrkTexture::SetTexture(FrkTexture texture)
+void FrkTexture::SetImage(LPDIRECT3DTEXTURE9 lpImage)
 {
-	SetHeight(texture.GetHeight());
-	SetWidth(texture.GetWidth());
+	m_hLpDirect3DTexture = lpImage;
 }
 
-FrkTexture FrkTexture::GetTexture()
+LPDIRECT3DTEXTURE9 FrkTexture::GetImage()
 {
-	return FrkTexture(m_width, m_height);
+	return m_hLpDirect3DTexture;
+}
+
+FrkTexture::~FrkTexture()
+{
+
 }

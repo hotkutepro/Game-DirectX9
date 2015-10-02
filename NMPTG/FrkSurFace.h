@@ -12,7 +12,7 @@ public:
 	FrkSurface();
 	FrkSurface(const FrkSurface& surface);
 	~FrkSurface();
-	void LoadSurfaceFromFile(LPDRECT3DDEVICE9 lpDirectDevice, D3DCOLOR colorKey, LPCSTR fileName);
+	void LoadSurfaceFromFile(LPDIRECT3DDEVICE9 lpDirectDevice, D3DCOLOR colorKey, LPCSTR fileName);
 	void RenderSurface(LPDIRECT3DDEVICE9 lpDirectDevice, RECT* srcRect, RECT* desRect);
 	void UnLoadSurface();
 };
