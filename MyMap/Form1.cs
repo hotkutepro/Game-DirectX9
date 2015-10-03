@@ -290,10 +290,11 @@ namespace MyMap
                     tbm.Visible = false;
                     tbm.Size = _sizeObject;
                     tbm.Name = "" + (j + i * _column);
-                    tbm.Location=new Point(btnImage.Location.X+j*_width,btnImage.Location.Y+i*_height);
+                    tbm.Location=new Point(btnImage.Location.X+j*_width+2,btnImage.Location.Y+i*_height+2);
                     tbm.MouseClick += new MouseEventHandler(l_btnTiled_MouseClick);
                     _lTiled.Add(tbm);                    
                 }
+            this.btnImage.Paint += new System.Windows.Forms.PaintEventHandler(this.btnImage_Paint);
         }
         private void l_btnTiled_MouseClick(object sender, MouseEventArgs e)
         {
@@ -366,6 +367,21 @@ namespace MyMap
                     MessageBox.Show("Đã Xong! File vừa tạo có tên là Object.txt");
                     writer.Close();
                 }
+        }
+        
+        private void btnImage_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g;
+            g = e.Graphics;
+            Pen p = new Pen(Color.Red, 0.5f);
+            for (int i = 0; i <= _row; i++)
+            {
+                g.DrawLine(p, new Point(2, i * _height+2), new Point(_image.Width+2, i * _height+2));
+            }
+            for (int i = 0; i <= _column; i++)
+            {
+                g.DrawLine(p, new Point(i * _width+2, 2), new Point(i * _width+2, _image.Height+2));
+            }
         }        
     }
 }

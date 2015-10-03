@@ -88,6 +88,7 @@
             this.tbsourse.Name = "tbsourse";
             this.tbsourse.Size = new System.Drawing.Size(367, 20);
             this.tbsourse.TabIndex = 2;
+            this.tbsourse.Text = "C:\\\\Users\\\\gogoGO\\\\Desktop\\\\src mario\\\\1-1.png";
             // 
             // lbif
             // 
@@ -119,7 +120,7 @@
             // 
             this.btnImage.AutoSize = true;
             this.btnImage.Enabled = false;
-            this.btnImage.Location = new System.Drawing.Point(3, 3);
+            this.btnImage.Location = new System.Drawing.Point(0, 0);
             this.btnImage.Name = "btnImage";
             this.btnImage.Size = new System.Drawing.Size(75, 23);
             this.btnImage.TabIndex = 0;
@@ -224,7 +225,7 @@
             this.tbth.Name = "tbth";
             this.tbth.Size = new System.Drawing.Size(66, 20);
             this.tbth.TabIndex = 18;
-            this.tbth.Text = "32";
+            this.tbth.Text = "16";
             this.tbth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbth_KeyPress);
             // 
             // label12
@@ -242,7 +243,7 @@
             this.tbtw.Name = "tbtw";
             this.tbtw.Size = new System.Drawing.Size(66, 20);
             this.tbtw.TabIndex = 16;
-            this.tbtw.Text = "32";
+            this.tbtw.Text = "16";
             this.tbtw.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbtw_KeyPress);
             // 
             // label11
