@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include <d3d9.h>
+#include<dinput.h>
 class FrkGame
 {
 private:
@@ -20,8 +21,11 @@ protected:
 	LPDIRECT3D9 m_hD3D;
 	//thiet bi ve
 	LPDIRECT3DDEVICE9 m_hD3DDevive;
-public:
 	
+
+
+public:	
+
 	bool InitDX();
 	//thiet lap gia tri cho cua so
 	bool InitWindow();
@@ -37,6 +41,7 @@ public:
 	~FrkGame(void);
 
 	LPDIRECT3DDEVICE9 GetDevice();
-	
+	HINSTANCE GethIstance();	
+	HWND GetwndHandle();
 };
 
