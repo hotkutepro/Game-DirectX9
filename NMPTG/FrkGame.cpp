@@ -123,8 +123,10 @@ void FrkGame::Render()
 {
 
 }
-
-LPDIRECT3DDEVICE9 FrkGame::GetDevice()
+HINSTANCE FrkGame::GethIstance(){
+	return m_hInstance;
+}
+HWND FrkGame::GetwndHandle()
 {
-	return m_hD3DDevive;
+	return m_hWnd;
 }
