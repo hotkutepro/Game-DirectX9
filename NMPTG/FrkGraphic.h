@@ -31,5 +31,7 @@ public:
 	void DrawTexture(LPDIRECT3DTEXTURE9 texture, RECT source, D3DXVECTOR2 postion, D3DCOLOR color);
 
 	//Ve surface
-	void DrawSurface(LPDIRECT3DSURFACE9 surface, RECT rect, int x, int y);	
+	void DrawSurface(LPDIRECT3DSURFACE9 surface, RECT rect, int x, int y);
+	//Lay thiet bi ve
+	
 };
