@@ -123,6 +123,11 @@ void FrkGame::Render()
 {
 
 }
+//Lay thiet bi ve
+LPDIRECT3DDEVICE9 FrkGame::GetDevice()
+{
+	return this->m_hD3DDevive;
+}
 HINSTANCE FrkGame::GethIstance(){
 	return m_hInstance;
 }

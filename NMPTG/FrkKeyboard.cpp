@@ -12,9 +12,9 @@ void FrkKeyboard::InitDirectInput()
 void FrkKeyboard::CreateDevice()
 {
 	m_hDI_Device = 0;
-	//HRESULT hr = m_hDI_Object->CreateDevice(GUID_SysKeyboard,&(m_hDI_Device), NULL);		
-	//if (FAILED(hr))
-		//MessageBox(NULL, "Không khởi tạo được thiết bị DirectInput ", NULL, 1);
+	HRESULT hr = m_hDI_Object->CreateDevice(GUID_SysKeyboard,&(m_hDI_Device), NULL);	
+	if (FAILED(hr))
+		MessageBox(NULL, "Không khởi tạo được thiết bị DirectInput ", NULL, 1);
 }
 void FrkKeyboard::SetDataFormat()
 {

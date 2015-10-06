@@ -58,7 +58,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3d9.lib;d3dx9.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d9.lib;d3dx9.lib;dinput8.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -82,12 +82,16 @@
     <ClInclude Include="FrkContent.h" />
     <ClInclude Include="FrkGraphic.h" />
     <ClInclude Include="FrkGame.h" />
+    <ClInclude Include="FrkKeyboard.h" />
+    <ClInclude Include="FrkSprite.h" />
     <ClInclude Include="ResourcesManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FrkContent.cpp" />
     <ClCompile Include="FrkGame.cpp" />
     <ClCompile Include="FrkGraphic.cpp" />
+    <ClCompile Include="FrkKeyboard.cpp" />
+    <ClCompile Include="FrkSprite.cpp" />
     <ClCompile Include="ResourcesManager.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>

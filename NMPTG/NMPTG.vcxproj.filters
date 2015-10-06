@@ -27,6 +27,12 @@
     <ClInclude Include="FrkGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FrkKeyboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FrkSprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -42,6 +48,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FrkGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrkKeyboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrkSprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
