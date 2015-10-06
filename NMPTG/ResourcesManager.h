@@ -1,6 +1,8 @@
 #pragma once
 #include "FrkContent.h"
 #include "FrkGame.h"
+enum TextureID{ MyEnum };
+
 class ResourcesManager
 {
 private:
@@ -11,5 +13,6 @@ public:
 	void Init(FrkContent* Content);
 	ResourcesManager();
 	~ResourcesManager();
+	
 };
 
