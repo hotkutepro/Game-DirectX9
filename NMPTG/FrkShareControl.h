@@ -2,7 +2,6 @@
 #include"FrkContent.h"
 #include"FrkGraphic.h"
 #include"FrkKeyboard.h"
-
 #define ShareControl
 
 FrkGraphic* m_hGraphic;
