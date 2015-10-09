@@ -166,8 +166,8 @@ namespace MyMap
             createmap();
             writemap(tbnoiluuim.Text + "\\" + tbIn.Text);
             drawMap();
-            saveTiledMap(tbnoiluuim.Text + "\\hihi" + tbIn.Text);
-            MessageBox.Show("Đã Căt Xong! Tới đường dẫn " + tbsourse.Text + " để xem kết quả");
+            saveTiledMap(tbnoiluuim.Text + "\\" + tbIn.Text);
+            MessageBox.Show("Đã Căt Xong! Tới đường dẫn " + tbnoiluuim.Text + " để xem kết quả");
         }
         
         private void _btAddtiled_Click(object sender, EventArgs e)
