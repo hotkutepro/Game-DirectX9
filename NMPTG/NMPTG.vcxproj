@@ -83,7 +83,10 @@
     <ClInclude Include="FrkGraphic.h" />
     <ClInclude Include="FrkGame.h" />
     <ClInclude Include="FrkKeyboard.h" />
+    <ClInclude Include="FrkShareControl.h" />
     <ClInclude Include="FrkSprite.h" />
+    <ClInclude Include="FrkTexture.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="ResourcesManager.h" />
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +95,8 @@
     <ClCompile Include="FrkGraphic.cpp" />
     <ClCompile Include="FrkKeyboard.cpp" />
     <ClCompile Include="FrkSprite.cpp" />
+    <ClCompile Include="FrkTexture.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="ResourcesManager.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
