@@ -5,9 +5,7 @@ void FrkKeyboard::InitDirectInput()
 {
 	HRESULT hr = DirectInput8Create(m_hGame->GethIstance(), DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)&m_hDI_Object, NULL);
 	if (FAILED(hr))
-		MessageBox(NULL,"Không khởi tạo được đối tượng DirectInput",NULL,1);
-	
-	
+		MessageBox(NULL,"Không khởi tạo được đối tượng DirectInput",NULL,1);		
 }
 void FrkKeyboard::CreateDevice()
 {
@@ -28,7 +26,6 @@ void FrkKeyboard::SetCooperativeLevel()
 	if (FAILED(hr))
 		MessageBox(NULL, "Lỗi thiết lập mức truy cập của thiết bị",NULL,1);
 }
-
 void FrkKeyboard::Acquire()
 {
 	m_hDI_Device->Acquire();
@@ -39,19 +36,20 @@ void FrkKeyboard::UnAcquire()
 }
 void FrkKeyboard::GetDeviceState()
 {
+	
 	m_hDI_Device->GetDeviceState(sizeof(m_hBuffer), &m_hBuffer);
 
 }
+void FrkKeyboard::ClearBuffer(){
+	for (int i = 0; i < 256; i++)
+		m_hBuffer[i] = 0;
+}
 bool FrkKeyboard::IsKeyDown(int key)
-{
-	if (KEYDOWN(m_hBuffer, DIK_A))
-	{
-		MessageBox(NULL, "A", NULL, 1);
-	}
-	return true;
-	//return m_hBuffer[key] & 0x80;
+{	
+	return m_hBuffer[key] & 0x80;
 }
 void FrkKeyboard::Init(){
+	ZeroMemory(&m_hBuffer, sizeof(m_hBuffer));
 	InitDirectInput();
 	CreateDevice();
 	SetCooperativeLevel();
@@ -60,7 +58,8 @@ void FrkKeyboard::Init(){
 }
 FrkKeyboard::FrkKeyboard(FrkGame* game)
 {
-	m_hGame = game;	
+	m_hGame = game;
+	Init();		
 }
 FrkKeyboard::FrkKeyboard()
 {

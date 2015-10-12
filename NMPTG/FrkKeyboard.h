@@ -1,7 +1,8 @@
 #pragma once
 #include<dinput.h>
 #include"FrkGame.h"
-#define KEYDOWN(name,key) (name[key]&80)
+#include<DxErr.h>
+#include<dsound.h>
 class FrkKeyboard
 {
 	char m_hBuffer[256];
@@ -16,9 +17,10 @@ class FrkKeyboard
 	void SetDataFormat();
 	void Acquire();
 	void UnAcquire();
-	void GetDeviceState();
+	void Init();		
 public:		
-	void Init();
+	void ClearBuffer();
+	void GetDeviceState();
 	bool IsKeyDown(int key);
 	FrkKeyboard(FrkGame* game);
 	FrkKeyboard();
