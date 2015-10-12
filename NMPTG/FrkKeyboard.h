@@ -1,8 +1,6 @@
 #pragma once
 #include<dinput.h>
 #include"FrkGame.h"
-#include<DxErr.h>
-#include<dsound.h>
 class FrkKeyboard
 {
 	char m_hBuffer[256];
