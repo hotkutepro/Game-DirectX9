@@ -1,4 +1,6 @@
 #include "FrkGame.h"
+#include"FrkKeyboard.h"
+#include"FrkControl.h"
 
 
 FrkGame::FrkGame(HINSTANCE hIns, int Width, int Height, char* hWindowName)
@@ -111,7 +113,10 @@ bool FrkGame::InitDX()
 //Init game data
 void FrkGame::InitData()
 {
-	//load data
+	//load data	
+	m_hKeyboard = new FrkKeyboard(this);	
+	m_hContent = new FrkContent(this);
+	m_hGraphic = new FrkGraphic(this);
 }
 
 void FrkGame::Update(float gameTime)
