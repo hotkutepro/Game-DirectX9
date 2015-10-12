@@ -27,6 +27,21 @@
     <ClInclude Include="FrkGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FrkSurFace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FrkTexture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FrkSound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FrkMusic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DSutil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -42,6 +57,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FrkGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrkSurface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrkTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrkSound.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrkMusic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DSutil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
