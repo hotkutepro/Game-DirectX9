@@ -12,7 +12,7 @@ void FrkSprite::Reset()
 {
 	_Index = 0;
 }
-void FrkSprite::set(int index){
+void FrkSprite::Set(int index){
 	this->_Index = index;
 }
 FrkSprite::FrkSprite(FrkSprite* sprite)

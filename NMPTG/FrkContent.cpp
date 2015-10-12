@@ -4,8 +4,9 @@ FrkContent::FrkContent(FrkGame* hGame)
 	m_hGame = hGame;
 }
 
-LPDIRECT3DTEXTURE9 FrkContent::LoadTexture(string path)
+FrkTexture* FrkContent::LoadTexture(string path)
 {
+	this->m_hMytexture = new FrkTexture();
 	LPDIRECT3DTEXTURE9 texture = NULL;
 	D3DXIMAGE_INFO info;
 	HRESULT hr;
@@ -32,7 +33,10 @@ LPDIRECT3DTEXTURE9 FrkContent::LoadTexture(string path)
 
 	if (hr != D3D_OK)
 		return 0;
-	return texture;
+	this->m_hMytexture->SetImage(texture);
+	this->m_hMytexture->SetHeight(info.Height);
+	this->m_hMytexture->SetWidth(info.Width);
+	return m_hMytexture;
 }
 
 LPDIRECT3DSURFACE9 FrkContent::LoadSurface(string path)

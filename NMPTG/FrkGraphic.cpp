@@ -45,6 +45,17 @@ void FrkGraphic::DrawTexture(LPDIRECT3DTEXTURE9 texture, D3DXVECTOR2 postion, D3
 		);
 }
 
+void FrkGraphic::DrawTexture(LPDIRECT3DTEXTURE9 texture, RECT source, D3DXVECTOR2 postion, D3DCOLOR color)
+{
+	this->m_hD3DXSprite->Draw(
+		texture,//hinh can ve
+		&source,//khung cat tu hinh
+		NULL,//tam cua texture
+		&D3DXVECTOR3(postion.x, postion.y, 0),//toa do texture tren man hinh
+		color
+		);
+}
+
 
 
 void FrkGraphic::DrawSurface(LPDIRECT3DSURFACE9 surface, RECT rect, int x, int y)

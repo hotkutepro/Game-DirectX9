@@ -14,7 +14,8 @@ public:
 
 	void Next();
 	void Reset();
-	void set(int index);		
+	void Set(int index);		
+	void Render();
 	FrkSprite(FrkSprite* sprite);
 	FrkSprite(FrkTexture* img, int width, int height, int count, int spriteperrow);
 	FrkSprite();

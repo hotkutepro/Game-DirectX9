@@ -33,5 +33,5 @@ public:
 	//Ve surface
 	void DrawSurface(LPDIRECT3DSURFACE9 surface, RECT rect, int x, int y);
 	//Lay thiet bi ve
-	LPDIRECT3DDEVICE9 GetDevice();
+	
 };
