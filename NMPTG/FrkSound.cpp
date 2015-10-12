@@ -20,6 +20,7 @@ HRESULT FrkSound::InitializeSoundClass(HWND windowsHandler)
 	m_hWindowsHandler = windowsHandler;
 
 	HRESULT result;
+	// Thu tao thiet bi DS
 	result = DirectSoundCreate8(0, &m_hAudioHandler, 0);
 	result = result | m_hAudioHandler->SetCooperativeLevel(m_hWindowsHandler, DSSCL_PRIORITY);
 
