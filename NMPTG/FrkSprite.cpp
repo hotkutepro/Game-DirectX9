@@ -1,8 +1,15 @@
 #include "FrkSprite.h"
-
-
+#include"FrkControl.h"
 FrkSprite::FrkSprite()
 {
+}
+void FrkSprite::Render(D3DXVECTOR2 position){
+	RECT frame;
+	frame.left = (this->_Index % this->_SpriteperRow)*(this->_Image->GetWidth() / this->_SpriteperRow);
+	frame.right = frame.left + (this->_Image->GetWidth() / this->_SpriteperRow);
+	frame.top = (this->_Index / this->_SpriteperRow)*(this->_Image->GetHeight() / this->_SpriteperRow * this->_Count);
+	frame.bottom = frame.top + (this->_Image->GetHeight() / this->_SpriteperRow * this->_Count);
+	m_hGraphic->DrawTexture(this->_Image->GetImage(),frame, position, D3DCOLOR_XRGB(255, 255, 255));
 }
 void FrkSprite::Next()
 {

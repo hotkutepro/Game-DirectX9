@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include<d3dx9.h>
+#include<d3d9.h>
 #include"FrkTexture.h"
 class FrkSprite
 {
@@ -15,7 +16,7 @@ public:
 	void Next();
 	void Reset();
 	void Set(int index);		
-	void Render();
+	void Render(D3DXVECTOR2 position);
 	FrkSprite(FrkSprite* sprite);
 	FrkSprite(FrkTexture* img, int width, int height, int count, int spriteperrow);
 	FrkSprite();
