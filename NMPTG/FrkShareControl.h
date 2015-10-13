@@ -4,8 +4,8 @@
 #include"FrkKeyboard.h"
 #define ShareControl
 
-extern FrkGraphic* m_hGraphic;
-extern FrkContent* m_hContent;
-extern FrkKeyboard* m_hKeyboard;
+extern FrkGraphic* _LocalGraphic;
+extern FrkContent* _LocalContent;
+extern FrkKeyboard* _LocalhKeyboard;
 
 #endif ShareControl

@@ -1,5 +1,6 @@
 #pragma once
-#include "FrkShareControl.h"
+#include <d3dx9math.h>
+
 
 class Object
 {
@@ -8,10 +9,10 @@ protected:
 	float m_hAcceleration;
 	float m_hSpeed;
 public:
-	virtual void Init(){};
-	virtual void Render(){};
-	virtual void Update(){};
-	virtual void SetSite(){};
+	void Load();
+	void Render();
+	void Update();
+	void SetSite();
 	Object();
 	~Object();
 };

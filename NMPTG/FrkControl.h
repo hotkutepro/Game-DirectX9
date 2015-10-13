@@ -4,8 +4,8 @@
 #include"FrkKeyboard.h"
 #define FrkControl
 
-FrkGraphic* m_hGraphic;
-FrkContent* m_hContent;
-FrkKeyboard* m_hKeyboard;
+FrkGraphic* _LocalGraphic;
+FrkContent* _LocalContent;
+FrkKeyboard* _LocalKeyboard;
 
 #endif FrkControl

@@ -2,6 +2,7 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 #include "FrkGame.h"
+#include "FrkTexture.h"
 class FrkGraphic
 {
 private:
@@ -15,8 +16,7 @@ private:
 	LPD3DXSPRITE m_hD3DXSprite;
 	
 public:
-	//Cai dat thiet bi ve
-	bool InitD3DDevice();
+	
 	//Constructor
 	//FrkGraphic(HWND, int, int);
 	FrkGraphic(FrkGame* hGame);
@@ -27,8 +27,8 @@ public:
 	//Ket thuc ve
 	void End();
 	//Ve texture
-	void DrawTexture(LPDIRECT3DTEXTURE9 texture, D3DXVECTOR2 postion, D3DCOLOR color);
-	void DrawTexture(LPDIRECT3DTEXTURE9 texture, RECT source, D3DXVECTOR2 postion, D3DCOLOR color);
+	void DrawTexture(FrkTexture* texture, D3DXVECTOR2 postion, D3DCOLOR color);
+	void DrawTexture(FrkTexture* texture, RECT source, D3DXVECTOR2 postion, D3DCOLOR color);
 
 	//Ve surface
 	void DrawSurface(LPDIRECT3DSURFACE9 surface, RECT rect, int x, int y);

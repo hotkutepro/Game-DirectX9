@@ -3,16 +3,10 @@
 FrkGraphic::FrkGraphic(FrkGame* hGame)
 {
 	this->m_hGame = hGame;
+	D3DXCreateSprite(this->m_hGame->GetDevice(), &this->m_hD3DXSprite);
 }
 
-bool FrkGraphic::InitD3DDevice()
-{
-	HRESULT hr;
-	hr = D3DXCreateSprite(this->m_hGame->GetDevice(), &this->m_hD3DXSprite);
-	if (FAILED(hr))
-		return false;
-	return true;
-}
+
 
 FrkGraphic::~FrkGraphic(void)
 {
@@ -34,10 +28,10 @@ void FrkGraphic::End()
 	// the hien cac doi tuong 
 	this->m_hGame->GetDevice()->Present(NULL, NULL, NULL, NULL);
 }
-void FrkGraphic::DrawTexture(LPDIRECT3DTEXTURE9 texture, D3DXVECTOR2 postion, D3DCOLOR color)
+void FrkGraphic::DrawTexture(FrkTexture* texture, D3DXVECTOR2 postion, D3DCOLOR color)
 {
 	this->m_hD3DXSprite->Draw(
-		texture,//hinh can ve
+		texture->GetImage(),//hinh can ve
 		NULL,//khung cat tu hinh
 		NULL,//tam cua texture
 		&D3DXVECTOR3(postion.x, postion.y, 0),//toa do texture tren man hinh
@@ -45,10 +39,10 @@ void FrkGraphic::DrawTexture(LPDIRECT3DTEXTURE9 texture, D3DXVECTOR2 postion, D3
 		);
 }
 
-void FrkGraphic::DrawTexture(LPDIRECT3DTEXTURE9 texture, RECT source, D3DXVECTOR2 postion, D3DCOLOR color)
+void FrkGraphic::DrawTexture(FrkTexture* texture, RECT source, D3DXVECTOR2 postion, D3DCOLOR color)
 {
 	this->m_hD3DXSprite->Draw(
-		texture,//hinh can ve
+		texture->GetImage(),//hinh can ve
 		&source,//khung cat tu hinh
 		NULL,//tam cua texture
 		&D3DXVECTOR3(postion.x, postion.y, 0),//toa do texture tren man hinh

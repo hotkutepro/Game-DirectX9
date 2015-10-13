@@ -10,7 +10,7 @@ private:
 	HINSTANCE m_hInstance;
 	//hwnd cua cua so
 	HWND m_hWnd;
-	// kich thuong cua so
+	// kich thuoc cua so
 	int m_hWidth;
 	int m_hHeight;
 	//ten cua so
