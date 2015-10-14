@@ -6,6 +6,6 @@
 
 extern FrkGraphic* _LocalGraphic;
 extern FrkContent* _LocalContent;
-extern FrkKeyboard* _LocalhKeyboard;
+extern FrkKeyboard* _LocalKeyboard;
 
 #endif ShareControl
