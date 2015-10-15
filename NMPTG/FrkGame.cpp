@@ -1,6 +1,5 @@
-#include "FrkGame.h"
+﻿#include "FrkGame.h"
 #include"FrkKeyboard.h"
-
 
 
 FrkGame::FrkGame(HINSTANCE hIns, int Width, int Height, char* hWindowName)
@@ -111,7 +110,7 @@ bool FrkGame::InitDX()
 	return true;
 }
 //Init game data
-void FrkGame::InitData()
+void FrkGame::Load()
 {
 	
 }
@@ -136,4 +135,50 @@ HINSTANCE FrkGame::GethIstance(){
 HWND FrkGame::GetwndHandle()
 {
 	return m_hWnd;
+}
+
+void FrkGame::Run()
+{
+	MSG msg;
+	ZeroMemory(&msg, sizeof(MSG));
+	LARGE_INTEGER start;
+	LARGE_INTEGER now;
+	LARGE_INTEGER cycle_count_per_second;
+	
+	QueryPerformanceFrequency(&cycle_count_per_second);
+	//thoi gian 1 xung cpu / so xung cpu
+	float time_per_cycle = 1000.0f / cycle_count_per_second.QuadPart;
+	float game_time = 0;
+	//thoi gian 1 frame / 60 frame
+	float frame_rate = 1000.0f / 30.0f;
+	//so xung tu luc khoi dong may den luc goi
+	QueryPerformanceCounter(&start);
+	float sleep;
+	while (msg.message != WM_QUIT)
+	{
+		if (PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE))
+		{
+			TranslateMessage(&msg);	
+			DispatchMessage(&msg);
+		}
+		else
+		{
+			//so xung tu luc khoi dong may den luc goi
+			QueryPerformanceCounter(&now);
+			//A = (now - start)  số xung từ now ->start
+			// A * thoi gian 1 xung => thời gian từ now->start
+			game_time = (now.QuadPart - start.QuadPart) * time_per_cycle;
+			if (game_time >= frame_rate)
+			{
+				start = now;
+				this->Update(game_time);
+				this->Render();
+				
+			}
+			else
+			{
+				Sleep(frame_rate - game_time);
+			}
+		}
+	}
 }

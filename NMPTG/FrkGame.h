@@ -31,11 +31,12 @@ public:
 	//thiet lap gia tri cho cua so
 	bool InitWindow();
 	//load data game
-	void InitData();
+	virtual void Load();
 	//update sau khoang thoi gian gameTime
-	void Update(float gameTime);
+	virtual void Update(float gameTime);
 	//draw
-	void Render();
+	virtual void Render();
+	void Run();
 	// Constructor
 	FrkGame(HINSTANCE hIns, int hWidth, int hHeight, char* hWindowName);
 	FrkGame(FrkGame* hGame);
