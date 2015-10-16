@@ -26,7 +26,7 @@ void Object::Update(float gameTime)
 
 }
 
-void Object::SetSite()
+void Object::SetSite(int x, int y)
 {
 
 }

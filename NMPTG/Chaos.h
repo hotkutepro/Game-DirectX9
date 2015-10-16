@@ -3,12 +3,19 @@
 #include "FrkGame.h"
 #include "Animals.h"
 #include "FrkGraphic.h"
+#include "FrkSound.h"
 
 class Chaos : public FrkGame
 {
 protected:
 	FrkGraphic* graphic;
 	Animals* mario;
+	Animals* mario1;
+	Animals* mario2;
+	Animals* mario3;
+	FrkContent* content;
+	FrkTexture* wall;
+	FrkSound* music;
 public:	
 	Chaos(HINSTANCE hInst, int hW, int hH, char* hName);
 	~Chaos();

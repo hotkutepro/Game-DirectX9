@@ -14,6 +14,6 @@ public:
 	void Load(FrkContent*);
 	void Render();
 	void Update(float gameTime);
-	void SetSite();
+	void SetSite(int x,int y);
 };
 

@@ -76,8 +76,6 @@ bool FrkGame::InitWindow()
 	UpdateWindow(this->m_hWnd);
 	return true;
 }
-
-
 bool FrkGame::InitDX()
 {
 	//tao mot doi tuong Direct3D
@@ -114,12 +112,10 @@ void FrkGame::Load()
 {
 	
 }
-
 void FrkGame::Update(float gameTime)
 {
 
 }
-
 void FrkGame::Render()
 {
 
@@ -136,7 +132,6 @@ HWND FrkGame::GetwndHandle()
 {
 	return m_hWnd;
 }
-
 void FrkGame::Run()
 {
 	MSG msg;
@@ -146,10 +141,10 @@ void FrkGame::Run()
 	LARGE_INTEGER cycle_count_per_second;
 	
 	QueryPerformanceFrequency(&cycle_count_per_second);
-	//thoi gian 1 xung cpu / so xung cpu
+	//thoi gian 1 xung cpu / so xung cpu /1s
 	float time_per_cycle = 1000.0f / cycle_count_per_second.QuadPart;
 	float game_time = 0;
-	//thoi gian 1 frame / 60 frame
+	//thoi gian 1 frame / 60 frame /1s
 	float frame_rate = 1000.0f / 30.0f;
 	//so xung tu luc khoi dong may den luc goi
 	QueryPerformanceCounter(&start);

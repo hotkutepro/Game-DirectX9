@@ -13,7 +13,7 @@ public:
 	virtual void Load(FrkContent*);
 	virtual void Render();
 	virtual void Update(float gameTime);
-	virtual void SetSite();
+	virtual void SetSite(int x, int y);
 	Object();
 	~Object();
 };

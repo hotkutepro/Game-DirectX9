@@ -6,7 +6,7 @@ int WINAPI WinMain(HINSTANCE h, HINSTANCE p, LPTSTR a, int c)
 {
 
 	MSG msg;
-	FrkGame* game = new Chaos(h, 480, 600, "animals");
+	FrkGame* game = new Chaos(h, 800, 480, "animals");
 	if (!game->InitWindow())
 	{
 		MessageBox(NULL, "Can't init game", "Error", MB_OK);
