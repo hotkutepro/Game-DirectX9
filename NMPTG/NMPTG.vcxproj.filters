@@ -51,6 +51,9 @@
     <ClInclude Include="Animals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FrkSound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -84,6 +87,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Animals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrkSound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
