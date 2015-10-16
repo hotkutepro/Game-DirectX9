@@ -23,9 +23,10 @@ void Chaos::Load()
 
 	music = new FrkSound("E.mp3");*/
 	music = new FrkSound(audioPath);
-	music->Play();
 
 	music->InitializeSoundClass(this->GetwndHandle());
+
+	music->Play();
 
 	mario = new Animals();
 	mario->Load(content);
