@@ -16,6 +16,7 @@ protected:
 	FrkContent* content;
 	FrkTexture* wall;
 	FrkSound* music;
+	tchar* audioPath = "sound1.wav";
 public:	
 	Chaos(HINSTANCE hInst, int hW, int hH, char* hName);
 	~Chaos();

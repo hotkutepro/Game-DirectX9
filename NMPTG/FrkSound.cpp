@@ -5,7 +5,7 @@ DSBUFFERDESC FrkSound::m_hBufferDescription;
 LPDIRECTSOUND8 FrkSound::m_hAudioHandler;
 HWND FrkSound::m_hWindowsHandler;
 
-FrkSound::FrkSound(const wchar_t* audioPath)
+FrkSound::FrkSound(const tchar* audioPath)
 {
 	LoadAudio(audioPath);
 }
@@ -52,7 +52,7 @@ HRESULT FrkSound::ReleaseSoundClass()
 	return S_OK;
 }
 
-HRESULT FrkSound::LoadAudio(const wchar_t* audioPath)
+HRESULT FrkSound::LoadAudio(const tchar* audioPath)
 {
 	HRESULT result;
 	CWaveFile audioObject;

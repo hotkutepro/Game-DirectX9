@@ -1,6 +1,12 @@
 #ifndef __SOUND_H__
 #define __SOUND_H__
 
+#ifdef _UNICODE
+typedef wchar_t tchar;
+#else
+typedef char tchar;
+#endif
+
 #pragma comment(lib, "dsound.lib")
 #pragma comment(lib, "winmm.lib")
 #pragma comment(lib, "dxguid.lib")
@@ -28,7 +34,7 @@
 class FrkSound
 {
 public:
-	FrkSound(const wchar_t* audioPath);
+	FrkSound(const tchar* audioPath);
 	~FrkSound(void);
 
 	static HRESULT InitializeSoundClass(HWND windowsHandler);
@@ -37,7 +43,7 @@ public:
 	HRESULT Play(bool isLoop = false, DWORD priority = 0);
 	HRESULT Stop();
 private:
-	HRESULT LoadAudio(const wchar_t* audioPath);
+	HRESULT LoadAudio(const tchar* audioPath);
 private:
 	static WAVEFORMATEX m_hBufferFormat;
 	static DSBUFFERDESC m_hBufferDescription;
