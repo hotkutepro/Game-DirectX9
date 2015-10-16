@@ -10,7 +10,7 @@ Object::~Object()
 {
 }
 
-void Object::Load()
+void Object::Load(FrkContent*)
 {
 
 }
@@ -20,12 +20,13 @@ void Object::Render()
 
 }
 
-void Object::Update()
+
+void Object::Update(float gameTime)
 {
 
 }
 
-void Object::SetSite()
+void Object::SetSite(int x, int y)
 {
 
 }

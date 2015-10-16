@@ -81,6 +81,7 @@
   <ItemGroup>
     <ClInclude Include="Animals.h" />
     <ClInclude Include="Chaos.h" />
+    <ClInclude Include="DSutil.h" />
     <ClInclude Include="FrkContent.h" />
     <ClInclude Include="FrkControl.h" />
     <ClInclude Include="FrkGraphic.h" />
@@ -96,6 +97,7 @@
   <ItemGroup>
     <ClCompile Include="Animals.cpp" />
     <ClCompile Include="Chaos.cpp" />
+    <ClCompile Include="DSutil.cpp" />
     <ClCompile Include="FrkContent.cpp" />
     <ClCompile Include="FrkGame.cpp" />
     <ClCompile Include="FrkGraphic.cpp" />

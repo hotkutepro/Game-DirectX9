@@ -44,7 +44,7 @@ namespace MyMap
             for (int i = 0; i < _column; i++)
                 for (int j = 0; j < _row; j++)
                     listtiled.Add(new tiled(new Rectangle(i * _width, j * _height, _width, _height), new Point(j, i)));
-            int index = 1;
+            int index = 0;
             while (listtiled.Count != 0)
             {
                 tiled tmp = listtiled[0];

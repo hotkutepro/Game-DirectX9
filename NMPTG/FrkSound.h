@@ -41,9 +41,9 @@ private:
 private:
 	static WAVEFORMATEX m_hBufferFormat;
 	static DSBUFFERDESC m_hBufferDescription;
+	static HWND m_hWindowsHandler;
 	// Bien luu tru thiet bi DS
 	static LPDIRECTSOUND8 m_hAudioHandler;
-	static HWND m_hWindowsHandler;
 
 	LPDIRECTSOUNDBUFFER m_hSoundBuffer;
 };

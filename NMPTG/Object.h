@@ -1,5 +1,6 @@
 #pragma once
 #include <d3dx9math.h>
+#include "FrkContent.h"
 
 
 class Object
@@ -9,10 +10,10 @@ protected:
 	float m_hAcceleration;
 	float m_hSpeed;
 public:
-	void Load();
-	void Render();
-	void Update();
-	void SetSite();
+	virtual void Load(FrkContent*);
+	virtual void Render();
+	virtual void Update(float gameTime);
+	virtual void SetSite(int x, int y);
 	Object();
 	~Object();
 };

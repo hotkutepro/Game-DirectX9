@@ -89,6 +89,9 @@
     <ClCompile Include="Animals.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DSutil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="FrkSound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
