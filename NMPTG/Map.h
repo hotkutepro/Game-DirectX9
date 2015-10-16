@@ -1,8 +1,8 @@
 #pragma once
 #include"FrkTexture.h"
+#include<string>
 #include<iostream>
 #include<fstream>
-#include"FrkShareControl.h"
 using namespace std;
 class Map
 {
