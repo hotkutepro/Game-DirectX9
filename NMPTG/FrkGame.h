@@ -2,10 +2,10 @@
 #include <Windows.h>
 #include <d3d9.h>
 #include<dinput.h>
-
+#include"Map.h"
 class FrkGame
 {
-private:
+private:	
 	//hinstance cua chuong trinh
 	HINSTANCE m_hInstance;
 	//hwnd cua cua so
@@ -27,6 +27,9 @@ protected:
 
 public:	
 
+	void InitLocal();
+	//Map* m = new Map();
+	void InitLocal();
 	bool InitDX();
 	//thiet lap gia tri cho cua so
 	bool InitWindow();
