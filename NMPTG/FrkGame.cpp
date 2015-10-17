@@ -177,3 +177,9 @@ void FrkGame::Run()
 		}
 	}
 }
+void FrkGame::InitLocal()
+{
+	_LocalContent = new FrkContent(this);
+	_LocalGraphic = new FrkGraphic(this);
+	_LocalKeyboard = new FrkKeyboard(this);
+}
