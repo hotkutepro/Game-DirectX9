@@ -11,12 +11,12 @@ Animals::~Animals()
 {
 }
 
-void Animals::Load(FrkContent* content)
+void Animals::Load()
 {
 	FrkTexture* tLeft;
-	tLeft = content->LoadTexture("marioleft.png");
+	tLeft = _LocalContent->LoadTexture("marioleft.png");
 	FrkTexture* tRight;
-	tRight = content->LoadTexture("marioright.png");
+	tRight = _LocalContent->LoadTexture("marioright.png");
 	m_hMarioRight = new FrkSprite(tRight, 100, 20,5,5);
 	m_hMarioLeft = new FrkSprite(tLeft, 128, 32, 4, 4);
 	m_hRenderMario = m_hMarioRight;

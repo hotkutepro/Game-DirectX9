@@ -91,6 +91,7 @@
     <ClInclude Include="FrkSound.h" />
     <ClInclude Include="FrkSprite.h" />
     <ClInclude Include="FrkTexture.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ResourcesManager.h" />
   </ItemGroup>
@@ -105,6 +106,7 @@
     <ClCompile Include="FrkSound.cpp" />
     <ClCompile Include="FrkSprite.cpp" />
     <ClCompile Include="FrkTexture.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ResourcesManager.cpp" />
     <ClCompile Include="WinMain.cpp" />

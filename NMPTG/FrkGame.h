@@ -26,7 +26,7 @@ protected:
 
 
 public:	
-
+	void InitLocal();
 	void InitLocal();
 	//Map* m = new Map();
 	void InitLocal();

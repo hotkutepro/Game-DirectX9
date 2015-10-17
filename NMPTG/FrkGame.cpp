@@ -1,6 +1,6 @@
 ﻿#include "FrkGame.h"
 #include"FrkKeyboard.h"
-
+#include"FrkControl.h"
 
 FrkGame::FrkGame(HINSTANCE hIns, int Width, int Height, char* hWindowName)
 {
@@ -177,9 +177,8 @@ void FrkGame::Run()
 		}
 	}
 }
-void FrkGame::InitLocal()
-{
-	_LocalContent = new FrkContent(this);
+void FrkGame::InitLocal(){
 	_LocalGraphic = new FrkGraphic(this);
+	_LocalContent = new FrkContent(this);
 	_LocalKeyboard = new FrkKeyboard(this);
 }

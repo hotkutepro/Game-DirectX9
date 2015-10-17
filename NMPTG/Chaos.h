@@ -4,7 +4,7 @@
 #include "Animals.h"
 #include "FrkGraphic.h"
 #include "FrkSound.h"
-
+#include"Map.h"
 class Chaos : public FrkGame
 {
 protected:
@@ -12,11 +12,8 @@ protected:
 	Animals* mario;
 	Animals* mario1;
 	Animals* mario2;
-	Animals* mario3;
-	FrkContent* content;
-	FrkTexture* wall;
-	FrkSound* music;
-	tchar* audioPath = "sound1.wav";
+	Animals* mario3;	
+	Map* map;
 public:	
 	Chaos(HINSTANCE hInst, int hW, int hH, char* hName);
 	~Chaos();

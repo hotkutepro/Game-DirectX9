@@ -11,7 +11,7 @@ private:
 public:
 	Animals();
 	~Animals();
-	void Load(FrkContent*);
+	void Load();
 	void Render();
 	void Update(float gameTime);
 	void SetSite(int x,int y);
