@@ -35,11 +35,24 @@ void Chaos::Load()
 
 void Chaos::Update(float gameTime)
 {
-	mario->Update(gameTime);
+	//mario->Update(gameTime);
 	mario1->Update(gameTime);
 	mario2->Update(gameTime);
 	mario3->Update(gameTime);
-
+	_LocalKeyboard->GetDeviceState();
+	if (_LocalKeyboard->IsKeyDown(DIK_LEFT))
+	{
+		mario->SetSite(mario->getPosition().x - 5, mario->getPosition().y);
+		mario->m_hRenderMario = mario->m_hMarioLeft;
+		mario->m_hRenderMario->Next();
+	}
+	if (_LocalKeyboard->IsKeyDown(DIK_RIGHT))
+	{ 
+		mario->SetSite(mario->getPosition().x + 5, mario->getPosition().y);
+		mario->m_hRenderMario = mario->m_hMarioRight;
+		mario->m_hRenderMario->Next();
+	}
+	_LocalKeyboard->ClearBuffer();
 }
 
 void Chaos::Render()

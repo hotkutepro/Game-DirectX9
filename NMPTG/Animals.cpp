@@ -55,4 +55,11 @@ void Animals::SetSite(int x, int y)
 {
 	m_hSite.x = x;
 	m_hSite.y = y;
+	m_hPosition.x = x;
+	m_hPosition.y = y;
+}
+
+D3DXVECTOR2 Animals::getPosition()
+{
+	return m_hPosition;
 }

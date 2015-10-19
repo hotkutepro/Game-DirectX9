@@ -25,10 +25,7 @@ protected:
 	
 
 
-public:	
-	void InitLocal();
-	void InitLocal();
-	//Map* m = new Map();
+public:		
 	void InitLocal();
 	bool InitDX();
 	//thiet lap gia tri cho cua so
