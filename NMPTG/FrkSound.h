@@ -1,4 +1,4 @@
-#ifndef __SOUND_H__
+﻿#ifndef __SOUND_H__
 #define __SOUND_H__
 
 #ifdef _UNICODE
@@ -45,7 +45,9 @@ public:
 private:
 	HRESULT LoadAudio(const tchar* audioPath);
 private:
+	// Dinh dang của bộ đệm trong DS tùy theo âm thanh mà có đinh dạng khác nhau
 	static WAVEFORMATEX m_hBufferFormat;
+	// Cấu trúc miêu tả bộ đệm thứ cấp ngoài biết được định dạng bộ đêm cần biết vê kích thước của audio và bộ đệm sẽ chứa.
 	static DSBUFFERDESC m_hBufferDescription;
 	static HWND m_hWindowsHandler;
 	// Bien luu tru thiet bi DS
