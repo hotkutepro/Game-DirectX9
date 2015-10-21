@@ -13,6 +13,7 @@ int WINAPI WinMain(HINSTANCE h, HINSTANCE p, LPTSTR a, int c)
 		return 0;
 	}
 	game->InitDX();
+	game->InitLocal();
 	game->Load();
 	game->Run();
 	return 0;
