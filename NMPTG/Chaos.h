@@ -5,9 +5,11 @@
 #include "FrkGraphic.h"
 #include "FrkSound.h"
 #include"Map.h"
+#include"FrkCamera.h"
 class Chaos : public FrkGame
 {
 protected:
+	FrkCamera* camera;
 	FrkGraphic* graphic;
 	Animals* mario;
 	Animals* mario1;

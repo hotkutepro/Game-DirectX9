@@ -12,6 +12,7 @@ Chaos::~Chaos()
 
 void Chaos::Load()
 {				
+	camera = new FrkCamera(7000, 500);
 	map = new Map();
 	map->Init("hihi.txt", _LocalContent->LoadTexture("hihi.png"));
 	mario = new Animals();
@@ -36,6 +37,7 @@ void Chaos::Load()
 void Chaos::Update(float gameTime)
 {
 	//mario->Update(gameTime);
+	camera->Update(mario->getPosition());
 	mario1->Update(gameTime);
 	mario2->Update(gameTime);
 	mario3->Update(gameTime);
