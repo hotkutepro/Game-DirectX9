@@ -15,7 +15,7 @@ private:
 	//Ve texture
 	LPD3DXSPRITE m_hD3DXSprite;
 	
-	D3DXMATRIX _TranformMatrix;
+	D3DXMATRIX* _TranformMatrix;
 public:
 	
 	//Constructor
