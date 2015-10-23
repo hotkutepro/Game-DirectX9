@@ -140,7 +140,7 @@ D3DXVECTOR2 FrkGraphic::ConvertCoordinate(D3DXVECTOR2 ObjectWorldPosition, D3DXV
 	input.x = ObjectWorldPosition.x + ObjectCenter.x;
 	input.y = ObjectWorldPosition.y + ObjectCenter.y;
 	input.z = 0;
-	D3DXVec3Transform(&result, &input, &_TranformMatrix);
+	D3DXVec3Transform(&result, &input, _TranformMatrix);
 	return D3DXVECTOR2(result.x, result.y);
 }
 
