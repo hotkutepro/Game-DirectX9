@@ -11,6 +11,7 @@ FrkCamera::FrkCamera(float map_Width, float map_height)
 	this->m_hMaxHeight = map_height;
 	m_hVpx = m_hVpy = 0;
 	D3DXMatrixIdentity(&MatrixI);
+	this->MatrixI._22 = -1;
 }
 
 
