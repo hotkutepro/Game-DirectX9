@@ -25,7 +25,7 @@ public:
 	~FrkGraphic(void);
 	//bat dau ve
 	void Begin();
-	void Begin(D3DXMATRIX tranformMatrix);
+	void Begin(D3DXMATRIX* tranformMatrix);
 	//Ket thuc ve
 	void End();
 	//Ve texture

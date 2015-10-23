@@ -21,7 +21,7 @@ void FrkGraphic::Begin()
 	this->m_hD3DXSprite->Begin(D3DXSPRITE_ALPHABLEND);
 }
 
-void FrkGraphic::Begin(D3DXMATRIX tranformMatrix)
+void FrkGraphic::Begin(D3DXMATRIX* tranformMatrix)
 {
 	this->_TranformMatrix = tranformMatrix;
 	this->Begin();
