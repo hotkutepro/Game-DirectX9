@@ -45,8 +45,8 @@ void Map::Render()
 			des_rect.right = (j + 1) * 16;
 
 			des_rect.top = 480 - i * 16;
-			des_rect.bottom = des_rect.top + 16;
-			_LocalGraphic->DrawTexture(_texture, s_rect, D3DXVECTOR2(des_rect.left, des_rect.top), D3DCOLOR_XRGB(255, 255, 255));
+			des_rect.bottom = des_rect.top + 16;			
+			_LocalGraphic->tDrawTexture(this->_texture, s_rect, des_rect, D3DXVECTOR2(16, 16), D3DCOLOR_XRGB(255, 255, 255), 0.1);
 		}
 	}
 }

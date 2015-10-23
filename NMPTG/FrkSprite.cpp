@@ -9,7 +9,16 @@ void FrkSprite::Render(D3DXVECTOR2 position){
 	frame.right = frame.left + (this->_Image->GetWidth() / this->_SpriteperRow);
 	frame.top = (this->_Index / this->_SpriteperRow)*(this->_Image->GetHeight() / this->_SpriteperRow * this->_Count);
 	frame.bottom = frame.top + (this->_Image->GetHeight() / this->_SpriteperRow * this->_Count);
-	_LocalGraphic->DrawTexture(this->_Image,frame, position, D3DCOLOR_XRGB(255, 255, 255));
+
+	RECT des;
+	des.top = position.y;
+	des.left = position.x;
+	des.bottom = des.top + (this->_Image->GetHeight() / this->_SpriteperRow * this->_Count);
+	des.right = des.left + (this->_Image->GetWidth() / this->_SpriteperRow);
+	D3DXVECTOR2 center;
+	center.y = (this->_Image->GetHeight() / this->_SpriteperRow * this->_Count) / 2;
+	center.x = (this->_Image->GetWidth() / this->_SpriteperRow) / 2;
+	_LocalGraphic->tDrawTexture(this->_Image, frame, des, center, D3DCOLOR_XRGB(255, 255, 255),1);
 }
 void FrkSprite::Next()
 {
