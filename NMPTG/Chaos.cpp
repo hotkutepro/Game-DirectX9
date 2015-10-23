@@ -30,6 +30,12 @@ void Chaos::Load()
 	mario3 = new Animals();
 	mario3->Load();
 	mario3->SetSite(50, 350);
+	FrkSound* music;
+	music->InitializeSoundClass(this->GetwndHandle());
+	music= new FrkSound("E.wav");
+	
+	music->Play();
+
 }
 
 
@@ -44,13 +50,13 @@ void Chaos::Update(float gameTime)
 	_LocalKeyboard->GetDeviceState();
 	if (_LocalKeyboard->IsKeyDown(DIK_LEFT))
 	{
-		mario->SetSite(mario->getPosition().x - 5, mario->getPosition().y);
+		mario->SetSite(mario->getPosition().x - 8, mario->getPosition().y);
 		mario->m_hRenderMario = mario->m_hMarioLeft;
 		mario->m_hRenderMario->Next();
 	}
 	if (_LocalKeyboard->IsKeyDown(DIK_RIGHT))
 	{ 
-		mario->SetSite(mario->getPosition().x + 5, mario->getPosition().y);
+		mario->SetSite(mario->getPosition().x + 8, mario->getPosition().y);
 		mario->m_hRenderMario = mario->m_hMarioRight;
 		mario->m_hRenderMario->Next();
 	}

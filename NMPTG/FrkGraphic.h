@@ -15,6 +15,7 @@ private:
 	//Ve texture
 	LPD3DXSPRITE m_hD3DXSprite;
 	
+	D3DXMATRIX _TranformMatrix;
 public:
 	
 	//Constructor
@@ -24,14 +25,21 @@ public:
 	~FrkGraphic(void);
 	//bat dau ve
 	void Begin();
+	void Begin(D3DXMATRIX tranformMatrix);
 	//Ket thuc ve
 	void End();
 	//Ve texture
-	void DrawTexture(FrkTexture* texture, D3DXVECTOR2 postion, D3DCOLOR color);
-	void DrawTexture(FrkTexture* texture, RECT source, D3DXVECTOR2 postion, D3DCOLOR color);
+	void DrawTexture(FrkTexture* texture, D3DXVECTOR2 draw_postion,D3DXVECTOR2 texture_center, D3DCOLOR color, float depth);
+	void DrawTexture(FrkTexture* texture, RECT rect_Present, D3DXVECTOR2 texture_center, D3DCOLOR color, float depth);
+	void DrawTexture(FrkTexture* texture, RECT rect_source, RECT rect_Present, D3DXVECTOR2 texture_center, D3DCOLOR color, float depth);
+	
+	D3DXVECTOR2 ConvertCoordinate(D3DXVECTOR2 ObjectWorldPosition, D3DXVECTOR2 ObjectCenter);
 
+	void tDrawTexture(FrkTexture* texture, D3DXVECTOR2 draw_postion, D3DXVECTOR2 texture_center, D3DCOLOR color, float depth);
+	void tDrawTexture(FrkTexture* texture, RECT rect_Present, D3DXVECTOR2 texture_center, D3DCOLOR color, float depth);
+	void tDrawTexture(FrkTexture* texture, RECT rect_source, RECT rect_Present, D3DXVECTOR2 texture_center, D3DCOLOR color, float depth);
 	//Ve surface
 	void DrawSurface(LPDIRECT3DSURFACE9 surface, RECT rect, int x, int y);
-	//Lay thiet bi ve
+	
 	
 };

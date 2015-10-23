@@ -6,7 +6,7 @@
 class Object
 {
 protected:
-	D3DXVECTOR2 m_hSite;
+	D3DXVECTOR2 m_hPosition;
 	float m_hAcceleration;
 	float m_hSpeed;
 public:
