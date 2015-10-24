@@ -18,7 +18,7 @@ void Animals::Load()
 	FrkTexture* tRight;
 	tRight = _LocalContent->LoadTexture("marioright.png");
 	m_hMarioRight = new FrkSprite(tRight, 32, 16,2,2);
-	m_hMarioLeft = new FrkSprite(tLeft, 128, 32, 4, 4);
+	m_hMarioLeft = new FrkSprite(tLeft, 64, 16, 4, 4);
 	m_hRenderMario = m_hMarioRight;
 	
 }

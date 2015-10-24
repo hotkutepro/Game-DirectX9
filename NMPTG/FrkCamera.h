@@ -6,7 +6,8 @@ class FrkCamera
 {
 private: 
 	float m_hVpx, m_hVpy, m_hMaxWidth, m_hMaxHeight;
-	D3DXMATRIX MatrixI;//dùng để xoay quanh trục y
+	D3DXMATRIX MatrixI;//matrix bậc 4
+	D3DXMATRIX MatrixTran;
 public:
 	FrkCamera(float map_Width, float map_height);
 	void Update(D3DXVECTOR2 target);

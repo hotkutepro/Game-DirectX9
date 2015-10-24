@@ -12,20 +12,20 @@ Chaos::~Chaos()
 
 void Chaos::Load()
 {				
-	camera = new FrkCamera(7000, 500);
+	camera = new FrkCamera(2848, 670);
 	map = new Map();
 	map->Init("hihi.txt", _LocalContent->LoadTexture("hihi.png"));
 	mario = new Animals();
 	mario->Load();
-	mario->SetSite(50,50);
+	mario->SetSite(200,200);
 
 	mario1 = new Animals();
 	mario1->Load();
-	mario1->SetSite(50, 150);
+	mario1->SetSite(250, 250);
 
 	mario2 = new Animals();
 	mario2->Load();
-	mario2->SetSite(50, 250);
+	mario2->SetSite(100, 100);
 
 	mario3 = new Animals();
 	mario3->Load();
@@ -50,13 +50,25 @@ void Chaos::Update(float gameTime)
 	_LocalKeyboard->GetDeviceState();
 	if (_LocalKeyboard->IsKeyDown(DIK_LEFT))
 	{
-		mario->SetSite(mario->getPosition().x - 8, mario->getPosition().y);
+		mario->SetSite(mario->getPosition().x - 30, mario->getPosition().y);
 		mario->m_hRenderMario = mario->m_hMarioLeft;
 		mario->m_hRenderMario->Next();
 	}
 	if (_LocalKeyboard->IsKeyDown(DIK_RIGHT))
 	{ 
-		mario->SetSite(mario->getPosition().x + 8, mario->getPosition().y);
+		mario->SetSite(mario->getPosition().x + 30, mario->getPosition().y);
+		mario->m_hRenderMario = mario->m_hMarioRight;
+		mario->m_hRenderMario->Next();
+	}
+	if (_LocalKeyboard->IsKeyDown(DIK_UP))
+	{
+		mario->SetSite(mario->getPosition().x , mario->getPosition().y+5);
+		mario->m_hRenderMario = mario->m_hMarioLeft;
+		mario->m_hRenderMario->Next();
+	}
+	if (_LocalKeyboard->IsKeyDown(DIK_DOWN))
+	{
+		mario->SetSite(mario->getPosition().y , mario->getPosition().y-5);
 		mario->m_hRenderMario = mario->m_hMarioRight;
 		mario->m_hRenderMario->Next();
 	}
@@ -65,7 +77,7 @@ void Chaos::Update(float gameTime)
 
 void Chaos::Render()
 {
-	_LocalGraphic->Begin();	
+	_LocalGraphic->Begin(camera->GetTransformMatrix());	
 	map->Render();
 	mario->Render();
 	mario1->Render();

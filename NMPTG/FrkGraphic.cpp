@@ -102,7 +102,7 @@ void FrkGraphic::DrawTexture(FrkTexture* texture, RECT rect_source, RECT rect_Pr
 	m_hD3DXSprite->SetTransform(&_ScaleMatrix);
 	this->m_hD3DXSprite->Draw(
 		texture->GetImage(),//hinh can ve
-		&rect_Present,//khung cat tu hinh
+		&rect_source,//khung cat tu hinh//////////////////////////////////////////////
 		&draw_center,//tam cua texture (sau khi Scale)
 		&postion_Present,//toa do texture tren man hinh (sau khi Scale)
 		color
