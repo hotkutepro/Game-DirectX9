@@ -110,5 +110,13 @@
     <ClCompile Include="FrkCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SweptAABB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SweptAABB.cs">
+      <Filter>Header Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
