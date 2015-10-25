@@ -17,7 +17,7 @@ void Chaos::Load()
 	map->Init("hihi.txt", _LocalContent->LoadTexture("hihi.png"));
 	mario = new Animals();
 	mario->Load();
-	mario->SetSite(200,200);
+	mario->SetSite(200,400);
 
 	mario1 = new Animals();
 	mario1->Load();
@@ -42,12 +42,16 @@ void Chaos::Load()
 
 void Chaos::Update(float gameTime)
 {
-	//mario->Update(gameTime);
+	mario->Update(gameTime);
 	camera->Update(mario->getPosition());
 	mario1->Update(gameTime);
 	mario2->Update(gameTime);
 	mario3->Update(gameTime);
 	_LocalKeyboard->GetDeviceState();
+ 	if (_LocalKeyboard->IsKeyDown(DIK_SPACE))
+	{	
+			mario->SetSite(mario->getPosition().x, mario->getPosition().y + 15.0f);				
+	}
 	if (_LocalKeyboard->IsKeyDown(DIK_LEFT))
 	{
 		mario->SetSite(mario->getPosition().x - 30, mario->getPosition().y);
@@ -68,7 +72,7 @@ void Chaos::Update(float gameTime)
 	}
 	if (_LocalKeyboard->IsKeyDown(DIK_DOWN))
 	{
-		mario->SetSite(mario->getPosition().y , mario->getPosition().y-5);
+		mario->SetSite(mario->getPosition().x , mario->getPosition().y-5);
 		mario->m_hRenderMario = mario->m_hMarioRight;
 		mario->m_hRenderMario->Next();
 	}

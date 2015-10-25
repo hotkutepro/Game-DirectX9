@@ -30,12 +30,20 @@ void Animals::Render()
 float delay = 0;
 void Animals::Update(float gameTime)
 {
-	delay += gameTime / 10;
-	if (delay > gameTime)
+	
+	//delay += gameTime / 10;
+   	if (m_hPosition.y > 300) m_hPosition.y -= 5;//mario_vy -= FALLDOWN_VELOCITY_DECREASE;
+	else if (m_hPosition.y<200)
+	{
+		m_hPosition.y = 200;
+		//mario_vy = 0;
+	}
+	/*if (delay > gameTime)
 	{
 		m_hRenderMario->Next();
 		delay = 0;
 	}
+
 	m_hPosition.x+=m_hSpeed;
 	if (m_hPosition.x> 200)
 	{
@@ -46,7 +54,7 @@ void Animals::Update(float gameTime)
 	{
 		m_hRenderMario = m_hMarioRight;
 		m_hSpeed = -m_hSpeed;
-	}
+	}*/
 	m_hRenderMario->Next();
 		
 }
