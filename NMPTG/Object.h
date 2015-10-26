@@ -8,12 +8,14 @@ class Object
 protected:
 	D3DXVECTOR2 m_hPosition;
 	float m_hAcceleration;
-	float m_hSpeed;
+	D3DXVECTOR2 m_hSpeed;
 public:
 	virtual void Load(FrkContent*);
 	virtual void Render();
 	virtual void Update(float gameTime);
-	virtual void SetSite(int x, int y);
+	void SetSite(int x, int y);
+	D3DXVECTOR2 GetPosition();
+	Object(D3DXVECTOR2 pos, D3DXVECTOR2 speed);
 	Object();
 	~Object();
 };

@@ -79,9 +79,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Animals.h" />
+    <ClInclude Include="Box.h" />
+    <ClInclude Include="Brick.h" />
     <ClInclude Include="Chaos.h" />
     <ClInclude Include="DSutil.h" />
+    <ClInclude Include="E_FlyTortoise.h" />
+    <ClInclude Include="E_Tortoise.h" />
     <ClInclude Include="FrkCamera.h" />
     <ClInclude Include="FrkContent.h" />
     <ClInclude Include="FrkControl.h" />
@@ -92,14 +95,20 @@
     <ClInclude Include="FrkSound.h" />
     <ClInclude Include="FrkSprite.h" />
     <ClInclude Include="FrkTexture.h" />
+    <ClInclude Include="Hero.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Objects.h" />
     <ClInclude Include="ResourcesManager.h" />
+    <ClInclude Include="SweptAABB.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Animals.cpp" />
+    <ClCompile Include="Box.cpp" />
+    <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Chaos.cpp" />
     <ClCompile Include="DSutil.cpp" />
+    <ClCompile Include="E_FlyTortoise.cpp" />
+    <ClCompile Include="E_Tortoise.cpp" />
     <ClCompile Include="FrkCamera.cpp" />
     <ClCompile Include="FrkContent.cpp" />
     <ClCompile Include="FrkGame.cpp" />
@@ -108,14 +117,16 @@
     <ClCompile Include="FrkSound.cpp" />
     <ClCompile Include="FrkSprite.cpp" />
     <ClCompile Include="FrkTexture.cpp" />
+    <ClCompile Include="Hero.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Objects.cpp" />
     <ClCompile Include="ResourcesManager.cpp" />
     <ClCompile Include="SweptAABB.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="SweptAABB.cs" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,20 +1,22 @@
 #pragma once
-
 #include "FrkGame.h"
-#include "Animals.h"
 #include "FrkGraphic.h"
 #include "FrkSound.h"
 #include "Map.h"
 #include"FrkCamera.h"
+#include "Box.h"
+#include "SweptAABB.h"
+#include "Hero.h"
+#include"Brick.h"
 class Chaos : public FrkGame
 {
-protected:
+protected:		
+	Brick* br;
+	SweptAABB* sw;
+	Box* bound1, bound2;
+	Hero* hero;
 	FrkCamera* camera;
-	FrkGraphic* graphic;
-	Animals* mario;
-	Animals* mario1;
-	Animals* mario2;
-	Animals* mario3;	
+	FrkGraphic* graphic;	
 	Map* map;
 public:	
 	Chaos(HINSTANCE hInst, int hW, int hH, char* hName);
