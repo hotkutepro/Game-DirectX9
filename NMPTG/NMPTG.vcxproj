@@ -81,6 +81,9 @@
   <ItemGroup>
     <ClInclude Include="Animals.h" />
     <ClInclude Include="Chaos.h" />
+    <ClInclude Include="DefaultConstant.h" />
+    <ClInclude Include="DefaultMethods.h" />
+    <ClInclude Include="DefaultStructure.h" />
     <ClInclude Include="DSutil.h" />
     <ClInclude Include="FrkCamera.h" />
     <ClInclude Include="FrkContent.h" />
@@ -91,7 +94,9 @@
     <ClInclude Include="FrkShareControl.h" />
     <ClInclude Include="FrkSound.h" />
     <ClInclude Include="FrkSprite.h" />
+    <ClInclude Include="FrkText.h" />
     <ClInclude Include="FrkTexture.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ResourcesManager.h" />
@@ -107,7 +112,9 @@
     <ClCompile Include="FrkKeyboard.cpp" />
     <ClCompile Include="FrkSound.cpp" />
     <ClCompile Include="FrkSprite.cpp" />
+    <ClCompile Include="FrkText.cpp" />
     <ClCompile Include="FrkTexture.cpp" />
+    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ResourcesManager.cpp" />
