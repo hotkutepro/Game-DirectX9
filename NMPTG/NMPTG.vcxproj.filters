@@ -48,9 +48,6 @@
     <ClInclude Include="FrkControl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Animals.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FrkSound.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -63,19 +60,25 @@
     <ClInclude Include="FrkCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FrkText.h">
+    <ClInclude Include="SweptAABB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DefaultConstant.h">
+    <ClInclude Include="Box.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DefaultStructure.h">
+    <ClInclude Include="Hero.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DefaultMethods.h">
+    <ClInclude Include="Brick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameState.h">
+    <ClInclude Include="Objects.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E_Tortoise.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E_FlyTortoise.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -110,9 +113,6 @@
     <ClCompile Include="Chaos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Animals.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DSutil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -128,16 +128,26 @@
     <ClCompile Include="SweptAABB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FrkText.cpp">
+    <ClCompile Include="Box.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameState.cpp">
+    <ClCompile Include="Hero.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E_Tortoise.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E_FlyTortoise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="SweptAABB.cs">
-      <Filter>Header Files</Filter>
-    </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

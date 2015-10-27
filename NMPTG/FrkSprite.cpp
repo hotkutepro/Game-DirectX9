@@ -39,14 +39,14 @@ FrkSprite::FrkSprite(FrkSprite* sprite)
 	this->_Image = sprite->_Image;
 	this->_SpriteperRow = sprite->_SpriteperRow;
 }
-FrkSprite::FrkSprite(FrkTexture* img, int width, int height, int count, int spriteperrow)
+FrkSprite::FrkSprite(FrkTexture* img,int count, int spriteperrow)
 {
 	this->_Image = img;
-	this->_Count = count;
-	this->_Height = height;
-	this->_Width = width;
+	this->_Count = count;		
 	this->_SpriteperRow = spriteperrow;
 	this->_Index = 0;
+	this->_Height = img->GetHeight()*spriteperrow / count;
+	this->_Width = img->GetWidth() / spriteperrow;
 }
 FrkSprite::~FrkSprite()
 {

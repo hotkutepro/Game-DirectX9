@@ -1,4 +1,4 @@
-#ifndef __FRKTEXTURE_H__
+﻿#ifndef __FRKTEXTURE_H__
 #define __FRKTEXTURE_H__
 
 #include <d3d9.h>
@@ -14,7 +14,7 @@ class FrkTexture
 {
 private:
 	LPDIRECT3DTEXTURE9 m_hLpDirect3DTexture;
-	int m_hWidth;
+	int m_hWidth;//Kích thước của một bưc ảnh lớn
 	int m_hHeight;
 public:
 	void SetHeight(int);
