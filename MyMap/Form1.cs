@@ -332,7 +332,7 @@ namespace MyMap
                 int j = e.Y / _height;
                 MessageBox.Show("hihi Array[" + j + "," + i + "] = "+ _arrmap[j,i]);                
             }
-            if (_index == -1&&_index==-2)
+            if (_index == -1||_index==-2)
                 return;
             int x = (e.X - btnImage.Location.X) / _width;
             int y = (e.Y - btnImage.Location.Y) / _height;         
