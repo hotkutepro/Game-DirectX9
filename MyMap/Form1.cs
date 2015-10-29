@@ -55,7 +55,8 @@ namespace MyMap
                 while (i < listtiled.Count)
                 {
                     tiled t = listtiled[i];
-                    if (checkPixels(tmp.rec, t.rec))
+                   // if (checkPixels(tmp.rec, t.rec))
+                    if(checkPixels_Neo(tmp.rec,t.rec))
                     {
                         _arrmap[t.point.X, t.point.Y] = index;
                         listtiled.Remove(t);
@@ -84,17 +85,37 @@ namespace MyMap
                 writer.Close();
             }
         }
+        private bool checkPixels_Neo(Rectangle r1, Rectangle r2) {
+            Color cl1, cl2;
+            for (int i = 0; i < _width; i++)
+            {
+                cl1 = this._img.GetPixel(r1.Left + i, r1.Top + i);
+                cl2 = this._img.GetPixel(r2.Left + i, r2.Top + i);
+                if (cl1 != cl2)
+                    return false;
+                cl1 = this._img.GetPixel(r1.Left + i, r1.Bottom - i-1);
+                cl2 = this._img.GetPixel(r2.Left + i, r2.Bottom - i-1);
+                if (cl1 != cl2)
+                    return false;
+                cl1 = this._img.GetPixel(r1.Left + i, r1.Bottom -8);
+                cl2 = this._img.GetPixel(r2.Left + i, r2.Bottom - 8);
+                if (cl1 != cl2)
+                    return false;
+
+            }
+            return true;
+        }
         private bool checkPixels(Rectangle r1, Rectangle r2)
         {
             Color[] cl1 = new Color[_width * _height];
             Color[] cl2 = new Color[_width * _height];
-            int k = 0;
-            for (int i = r1.Left; i < r1.Right; i++)
+            int k = 0;            
+           for (int i = r1.Left; i < r1.Right; i++)
                 for (int j = r1.Top; j < r1.Bottom; j++)
                 {
                     cl1[k++] = this._img.GetPixel(i, j);
                 }
-            k = 0;
+             k = 0;                
             for (int i = r2.Left; i < r2.Right; i++)
                 for (int j = r2.Top; j < r2.Bottom; j++)
                 {
@@ -103,7 +124,7 @@ namespace MyMap
             for (int i = 0; i < _width * _height; i++)
                 if (cl1[i] != cl2[i])
                     return false;
-            return true;
+                return true;
         }
         private void drawMap()
         {
@@ -146,7 +167,11 @@ namespace MyMap
                 OpenFileDialog openFile = new OpenFileDialog();
                 openFile.Filter = "Image|*.jpg;*.png;*.bmp;*.jpeg;*.gif";
                 if (openFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)                
-                    tbsourse.Text = openFile.FileName;                             
+                {
+                    tbsourse.Text = openFile.FileName;
+                    Bitmap img = new Bitmap(tbsourse.Text);
+                    lbimfomation.Text = "W = " + img.Width + " H = " + img.Height;
+                }
             }
             catch
             {
@@ -163,11 +188,12 @@ namespace MyMap
         }
         private void btDuyet_Click(object sender, EventArgs e)
         {
-            createmap();
+	            createmap();
             writemap(tbnoiluuim.Text + "\\" + tbIn.Text);
             drawMap();
             saveTiledMap(tbnoiluuim.Text + "\\" + tbIn.Text);
             MessageBox.Show("Đã Căt Xong! Tới đường dẫn " + tbnoiluuim.Text + " để xem kết quả");
+            cbCoordinatesMouse.Enabled = true;
         }
         
         private void _btAddtiled_Click(object sender, EventArgs e)
@@ -203,7 +229,7 @@ namespace MyMap
                 btnGetObject.Enabled = true;                   
             }            
         }
-        void Tiled_MouseClick(object sender, MouseEventArgs e)
+        void Tiled_MouseClick(object sender, MouseEventArgs e)////lấy chỉ số của đối tượng bên phải
         {
             Button t = (Button)sender;
             foreach (Button i in _lObject)
@@ -242,11 +268,6 @@ namespace MyMap
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btnKiemTra_Click(object sender, EventArgs e)
         {
 
@@ -270,7 +291,7 @@ namespace MyMap
             _img = new Bitmap(tbsourse.Text);
             if (_img.Width % w != 0 || _img.Height % h != 0)
             {
-                MessageBox.Show("Kiểm tra lại kích thước của đối tượng ảnh");
+                MessageBox.Show("Kiểm tra lại kích thước của một frame ảnh ");
                 return;
             }            
             _image = Image.FromFile(tbsourse.Text);
@@ -283,6 +304,8 @@ namespace MyMap
             btDuyet.Enabled = true;
             btAddtiled.Enabled = true;
             _sizeObject = new Size(_width, _height);
+            panel1.MinimumSize = new Size(_img.Width, _img.Height);
+            btnImage.MinimumSize = new Size(_img.Width, _img.Height);
             for(int i=0;i<_row;i++)
                 for(int j=0;j<_column;j++)
                 {
@@ -303,26 +326,25 @@ namespace MyMap
             Button t = (Button)sender;
             int i = int.Parse(t.Name);
             _lTiled[i].Image = null;
-            _lTiled[i].Visible = false;
+            _lTiled[i].id = "";
+            _lTiled[i].Visible = false;                        
         }
         private void btnImage_MouseClick(object sender, MouseEventArgs e)
         {
-            if (_index == -1 || _index==-2)
-                return;
-            panel1.Controls.Remove(btnImage);
-            int x = (e.X - btnImage.Location.X) / _width;
-            int y = (e.Y - btnImage.Location.Y) / _height;
-            _lTiled[x + _column * y].Visible = true;
-            _lTiled[x + _column * y].id = "" + _index;
-            panel1.Controls.Add(_lTiled[x + _column * y]);  
-          
-            panel1.Controls.Add(btnImage);            
-            foreach(Button i in _lObject)
+            if (cbCoordinatesMouse.Checked)
             {
-                if (i.Name == ("" + _index))
-                    _lTiled[x + _column * y].Image = i.Image;
+                int i = e.X / _width;
+                int j = e.Y / _height;
+                MessageBox.Show("hihi Array[" + j + "," + i + "] = "+ _arrmap[j,i]);                
             }
-            
+            if (_index == -1||_index==-2)
+                return;
+            int x = (e.X - btnImage.Location.X) / _width;
+            int y = (e.Y - btnImage.Location.Y) / _height;         
+            _lTiled[x + _column * y].Visible = true;
+            _lTiled[x + _column * y].id = "" + _index;            
+            panel1.Controls.Add(_lTiled[x + _column * y]);
+            _lTiled[x + _column * y].BringToFront();                      
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -334,8 +356,7 @@ namespace MyMap
         {
             _index = -2;
         }
-
-        private void btnGetObject_Click(object sender, EventArgs e)
+        private void btnGetObject_Click(object sender, EventArgs e) 
         {
             for (int i = 0; i < _lNameObject.Count; i++)
             {
@@ -343,32 +364,35 @@ namespace MyMap
                 {
                     MessageBox.Show("Điền id cho các đối tượng!");
                     return;
-                }                
+                }
             }
-                using (var stream = new FileStream(tbnoiluuim.Text+"Object.txt", FileMode.Create, FileAccess.Write, FileShare.None))
+            for (int i = 0; i < _lObject.Count; i++)
+            {
+                using (var stream = new FileStream(tbnoiluuim.Text + "\\" + _lNameObject[i].Text + ".txt", FileMode.Create, FileAccess.Write, FileShare.None))
                 using (var writer = new StreamWriter(stream))
                 {
-
-                    for (int i = 0; i < _lObject.Count; i++)
-                    {
-                        writer.Write(_lNameObject[i].Text + "\r\n");
-                        for (int j = _row - 1; j >= 0; j--)
-                            for (int k = 0; k < _column; k++ )
+                    int count = 0;
+                    for (int j = _row - 1; j >= 0; j--)
+                        for (int k = 0; k < _column; k++)
+                            if (_lTiled[k + j * _column].id == _lObject[i].Name)
+                                count++;
+                    writer.WriteLine("" + count);
+                    for (int j = _row - 1; j >= 0; j--)
+                        for (int k = 0; k < _column; k++)
+                        {
+                            if (_lTiled[k + j * _column].id == _lObject[i].Name)
                             {
-                                if (_lTiled[k + j * _column].id == _lObject[i].Name)
-                                {
-                                    int x=k * _width; 
-                                    int y=(_row - j) * _height;
-                                    writer.Write(x+ " " + y+" ");
-                                }
+                                int x = k * _width;
+                                int y = (_row - j) * _height;
+                                writer.Write(x + " " + y + " ");
                             }
-                         writer.Write("\r\n");
-                    }
-                    MessageBox.Show("Đã Xong! File vừa tạo có tên là Object.txt");
-                    writer.Close();
+                        }
+                    writer.Close();                    
+                    
                 }
-        }
-        
+            }
+            MessageBox.Show("Đã Xong!");
+        }        
         private void btnImage_Paint(object sender, PaintEventArgs e)
         {
             Graphics g;
@@ -383,5 +407,45 @@ namespace MyMap
                 g.DrawLine(p, new Point(i * _width+2, 2), new Point(i * _width+2, _image.Height+2));
             }
         }        
+        private void panel1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(cbCoordinatesMouse.Checked)
+            {
+                int i = e.X / _width;
+                int j = e.Y / _height;
+                MessageBox.Show("hihi Array["+j+","+i+"] = "+_arrmap[j,i]);
+
+            }
+        }
+        private void tbReplace_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar == 8);
+        }
+
+        private void tbReplaceWith_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar == 8);
+        }
+
+        private void btReplace_Click(object sender, EventArgs e)
+        {
+            if (tbReplaceWith.Text == "" || tbReplace.Text == "") { 
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin vào ô Replace và ô ReplaceWith");
+                return;
+            }
+            int r = int.Parse(tbReplace.Text);
+            int rw = int.Parse(tbReplaceWith.Text);
+            for (int i = 0; i < _row; i++)
+                for (int j = 0; j < _column; j++)
+                    if (_arrmap[i, j] == r)
+                        _arrmap[i, j] = rw;
+            MessageBox.Show("Thay đổi Xong! Nếu ok click GetMaxtrix để lấy ma trận mới");
+        }
+
+        private void btChange_Matrix_Click(object sender, EventArgs e)
+        {
+            writemap(tbnoiluuim.Text + "\\" + tbIn.Text);
+            MessageBox.Show("Đã ghi thành công! tới " + tbnoiluuim.Text + "/" + tbIn.Text+"để lấy file\n See You Again!");
+        }                                
     }
 }
