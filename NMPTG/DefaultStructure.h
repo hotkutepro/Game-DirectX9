@@ -1,4 +1,4 @@
-#ifndef __DEFAULT_STRUCTURE_H__
+﻿#ifndef __DEFAULT_STRUCTURE_H__
 #define __DEFAULT_STRUCTURE_H__
 
 #include <sstream>
@@ -6,6 +6,7 @@
 #include <d3dx9.h>
 using namespace std;
 
+// Chuyển đổi ngôn ngữ.
 #ifdef _UNICODE
 typedef	std::wstring	pstring;
 typedef wchar_t pchar;

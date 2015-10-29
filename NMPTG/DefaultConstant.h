@@ -1,4 +1,4 @@
-#ifndef __DEFAULT_CONSTANT_H__
+﻿#ifndef __DEFAULT_CONSTANT_H__
 #define __DEFAULT_CONSTANT_H__
 
 #include <Windows.h>
@@ -23,14 +23,15 @@
 
 // hang so mac dinh ve Text
 
-// Dung de
+// 72/96 tỉ lệ chuyển đổi
+// /2 or *2 tăng hay giảm kích thước.
 #define PIXEL_TO_POINT96(A) ((A/2*72/96))
 #define POINT_TO_PIXEL96(A) ((A/2*96/72))
 
-// Day la mau
+// Day la mau xám trắng
 #define DEFAULT_FONT_COLOR 0xFFBCBCBC
 #define DEFAULT_FONTSIZE 8
-// Fontface = ?
+// Fontface = tên font chữ
 #define DEFAULT_FONTFACE _T("Mario ")
 // Duong dan font
 #define  DEFAULT_FONTPATH _T("Resource//font.ttf")

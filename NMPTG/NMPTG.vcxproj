@@ -99,10 +99,13 @@
     <ClInclude Include="FrkSprite.h" />
     <ClInclude Include="FrkText.h" />
     <ClInclude Include="FrkTexture.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="Hero.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Objects.h" />
+    <ClInclude Include="PlayingState.h" />
     <ClInclude Include="ResourcesManager.h" />
     <ClInclude Include="SweptAABB.h" />
   </ItemGroup>
@@ -122,10 +125,13 @@
     <ClCompile Include="FrkSprite.cpp" />
     <ClCompile Include="FrkText.cpp" />
     <ClCompile Include="FrkTexture.cpp" />
+    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Hero.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Objects.cpp" />
+    <ClCompile Include="PlayingState.cpp" />
     <ClCompile Include="ResourcesManager.cpp" />
     <ClCompile Include="SweptAABB.cpp" />
     <ClCompile Include="WinMain.cpp" />

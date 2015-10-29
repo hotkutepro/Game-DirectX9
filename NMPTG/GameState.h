@@ -3,6 +3,9 @@
 
 #include "FrkKeyboard.h"
 #include "FrkCamera.h"
+#include "FrkSound.h"
+#include "FrkSprite.h"
+#include "FrkText.h"
 
 class GameState
 {
