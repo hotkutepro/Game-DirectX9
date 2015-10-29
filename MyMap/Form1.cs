@@ -97,6 +97,11 @@ namespace MyMap
                 cl2 = this._img.GetPixel(r2.Left + i, r2.Bottom - i-1);
                 if (cl1 != cl2)
                     return false;
+                cl1 = this._img.GetPixel(r1.Left + i, r1.Bottom -8);
+                cl2 = this._img.GetPixel(r2.Left + i, r2.Bottom - 8);
+                if (cl1 != cl2)
+                    return false;
+
             }
             return true;
         }
