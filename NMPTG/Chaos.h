@@ -8,6 +8,8 @@
 #include "SweptAABB.h"
 #include "Hero.h"
 #include"Brick.h"
+#include "GameState.h"
+#include <string.h>
 class Chaos : public FrkGame
 {
 protected:		

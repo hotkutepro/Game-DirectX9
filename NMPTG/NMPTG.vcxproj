@@ -20,7 +20,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>E:\Program File\sdk\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\Program File\sdk\Lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>E:\Program File\sdk\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -99,6 +99,7 @@
     <ClInclude Include="FrkSprite.h" />
     <ClInclude Include="FrkText.h" />
     <ClInclude Include="FrkTexture.h" />
+    <ClInclude Include="GameSound.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="MainMenu.h" />
@@ -125,6 +126,7 @@
     <ClCompile Include="FrkSprite.cpp" />
     <ClCompile Include="FrkText.cpp" />
     <ClCompile Include="FrkTexture.cpp" />
+    <ClCompile Include="GameSound.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="MainMenu.cpp" />

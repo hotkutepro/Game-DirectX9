@@ -10,6 +10,11 @@ FrkSound::FrkSound(const pchar* audioPath)
 	LoadAudio(audioPath);
 }
 
+FrkSound::FrkSound()
+{
+
+}
+
 FrkSound::~FrkSound(void)
 {
 	m_hSoundBuffer->Stop();
@@ -87,6 +92,12 @@ HRESULT FrkSound::LoadAudio(const pchar* audioPath)
 
 HRESULT FrkSound::Play(bool isLoop, DWORD priority)
 {
+	return m_hSoundBuffer->Play(0, priority, isLoop & DSBPLAY_LOOPING);
+}
+
+HRESULT FrkSound::Play(const pchar* audioPath, bool isLoop, DWORD priority)
+{
+	LoadAudio(audioPath);
 	return m_hSoundBuffer->Play(0, priority, isLoop & DSBPLAY_LOOPING);
 }
 

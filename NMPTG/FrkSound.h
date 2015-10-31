@@ -16,6 +16,7 @@
 class FrkSound
 {
 public:
+	FrkSound();
 	FrkSound(const pchar* audioPath);
 	~FrkSound(void);
 
@@ -23,6 +24,8 @@ public:
 	static HRESULT ReleaseSoundClass();
 
 	HRESULT Play(bool isLoop = false, DWORD priority = 0);
+	HRESULT Play(const pchar* audioPath, bool isLoop = false, DWORD priority = 0);
+
 	HRESULT Stop();
 private:
 	HRESULT LoadAudio(const pchar* audioPath);

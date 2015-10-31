@@ -1,16 +1,27 @@
 #include "GameState.h"
+#include "MainMenu.h"
 
 FrkKeyboard* GameState::m_hController = nullptr;
 GameState* GameState::m_hGameState = nullptr;
 
-void GameState::Initialize(FrkKeyboard* controller)
-{
-	m_hController = controller;
+//void GameState::Initialize(FrkKeyboard* controller)
+//{
+//	m_hController = controller;
+//
+//	// khoi tao nhan vat
+//	// khoi tao man va map
+//
+//	// chuyen man 
+//	SwitchState(MainMenu::Get());
+//}
 
+void GameState::Initialize()
+{
 	// khoi tao nhan vat
 	// khoi tao man va map
 
 	// chuyen man 
+	SwitchState(MainMenu::Get());
 }
 
 void GameState::Release()

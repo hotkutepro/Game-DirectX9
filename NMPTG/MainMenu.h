@@ -2,6 +2,7 @@
 #define __MAINMENU_H__
 
 #include "GameState.h"
+#include "FrkSound.h"
 
 class MainMenu : public GameState
 {
@@ -16,9 +17,9 @@ private:
 
 	virtual void CameraUpdate();
 private:
-	FrkSound* m_hSound;
-	FrkText* m_hText;
-	FrkSprite* m_hSprite;
+	FrkSound* m_hSoundMenu;
+	//FrkText* m_hTextMenu;
 	static MainMenu* m_hInstance;
+
 };
 #endif

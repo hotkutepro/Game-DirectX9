@@ -32,7 +32,7 @@
 #define DEFAULT_FONT_COLOR 0xFFBCBCBC
 #define DEFAULT_FONTSIZE 8
 // Fontface = tên font chữ
-#define DEFAULT_FONTFACE _T("Mario ")
+#define DEFAULT_FONTFACE _T("Contra (Famicom/NES)")
 // Duong dan font
 #define  DEFAULT_FONTPATH _T("Resource//font.ttf")
 

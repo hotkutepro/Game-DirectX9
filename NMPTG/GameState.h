@@ -7,6 +7,8 @@
 #include "FrkSprite.h"
 #include "FrkText.h"
 
+
+
 class GameState
 {
 public:
@@ -14,7 +16,9 @@ public:
 	virtual void Draw() = 0;
 	virtual void Enter() = 0;
 
-	static void Initialize(FrkKeyboard* controller);
+//	static void Initialize(FrkKeyboard* controller);
+	static void Initialize();
+
 
 	static void Release();
 
